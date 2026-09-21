@@ -30,11 +30,11 @@ Fonts currently use Google Fonts (DM Sans throughout), with system fallbacks. Al
 - `dist/index.html`: page structure and copy.
 - `dist/styles.css`: visual direction and responsive behavior.
 - `content/portfolio.json`: imported project text, ordered galleries, and original source URLs.
-- `scripts/build-portfolio.py`: regenerate the static project cards and `dist/portfolio-data.js` with `python3 scripts/build-portfolio.py`.
+- `scripts/build-portfolio.py`: regenerate the homepage project cards, `dist/portfolio-data.js`, one page per project under `dist/portfolio/<slug>/`, and `dist/sitemap.xml` with `python3 scripts/build-portfolio.py`. Run it after editing `content/portfolio.json`.
 - `dist/app.js`: project galleries, inquiry form, motion.
 - `dist/assets/`: photography.
 
-Deploy the contents of `dist/` to static hosting when ready. All internal paths are relative; project hash URLs require no server rewrites. For Sites deployment, register the site and set `static.directory` to `dist` at that time. Nothing has been registered or published yet.
+The site is published from `dist/` to GitHub Pages by `.github/workflows/pages.yml` on every push to `main`. All internal paths are relative, except `dist/404.html`, which GitHub serves at any missing address and therefore uses root-relative links.
 
 ## September revision: motion and Studio
 
@@ -87,3 +87,11 @@ Peter confirmed billboard placements in Times Square, New York, and Los Angeles;
 ## Social preview
 
 `dist/index.html` includes Open Graph and Twitter card tags so shared links show `dist/assets/share/julia.jpg`, a 1200×630 crop of the Julia cover. The tags use absolute `https://www.petersanjur.com/` URLs; update them if the site launches on a different domain.
+
+## Hosting, domain, and search
+
+GitHub Pages hosts the site; the petersanjur.com registration and DNS stay at Wix. In Wix, the root domain's A records point to GitHub Pages (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) and `www` is a CNAME to `peterasanjur-ctrl.github.io`. The Google Workspace MX record, the SPF record, and the Google site-verification TXT record must stay unchanged so email and Search Console keep working. The primary address is `https://www.petersanjur.com/`.
+
+Every project has its own crawlable page. The 14 projects imported from Wix keep their old `/portfolio/<slug>` addresses, so existing search results still land; newer projects use their content key as the slug. On the homepage, a plain click still opens the project in place (`#project/<key>`), while modified clicks and crawlers follow the real page. The old Wix booking addresses (`/book-online`, `/booking`, `/booking-1`) redirect to the studio page.
+
+Search details: `dist/robots.txt` points to the sitemap; every page has a canonical URL and description; the homepage carries Person and WebSite structured data, the studio page carries LocalBusiness data (no postal code or hours are claimed), and each project page carries CreativeWork data. The studio share image is `dist/assets/share/studio.jpg`.

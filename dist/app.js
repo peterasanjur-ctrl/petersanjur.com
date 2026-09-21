@@ -92,9 +92,15 @@ function syncProject() {
   const key = location.hash.startsWith('#project/') ? location.hash.slice(9) : null;
   stopProjectMedia();
   if (key && Object.hasOwn(projects,key)) renderProject(key);
-  else if (dialog.open) { dialog.close(); document.body.classList.remove('dialog-open'); document.title='Peter Sanjur — Photographer & Director'; }
+  else if (dialog.open) { dialog.close(); document.body.classList.remove('dialog-open'); document.title='Peter Sanjur — Dallas Photographer & Director'; }
 }
-document.querySelectorAll('[data-project]').forEach(link => link.addEventListener('click',()=>{projectTrigger=link;}));
+// Project links point at crawlable pages; on the homepage a plain click opens the same project in place.
+document.querySelectorAll('[data-project]').forEach(link => link.addEventListener('click',event=>{
+  if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  event.preventDefault();
+  projectTrigger=link;
+  location.hash=`project/${link.dataset.project}`;
+}));
 function closeProject() {
   history.replaceState(null,'','#work');
   syncProject();
@@ -102,7 +108,7 @@ function closeProject() {
 }
 document.querySelector('.close-dialog').addEventListener('click',closeProject);
 dialog.addEventListener('cancel',event=>{event.preventDefault();closeProject();});
-dialog.addEventListener('click',event=>{const link=event.target.closest('a');if(link && !link.hash.startsWith('#project/')) { stopProjectMedia();dialog.close();document.body.classList.remove('dialog-open');document.title='Peter Sanjur — Photographer & Director'; }});
+dialog.addEventListener('click',event=>{const link=event.target.closest('a');if(link && !link.hash.startsWith('#project/')) { stopProjectMedia();dialog.close();document.body.classList.remove('dialog-open');document.title='Peter Sanjur — Dallas Photographer & Director'; }});
 window.addEventListener('hashchange',syncProject);
 syncProject();
 

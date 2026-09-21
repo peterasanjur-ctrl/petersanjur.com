@@ -1,0 +1,89 @@
+# Peter Sanjur — local website concept
+
+A locally runnable, responsive portfolio alternative. The authored website is in `dist/`; there is no build step or dependency installation.
+
+## Preview
+
+Run `python3 -m http.server 4173 --bind 127.0.0.1 --directory dist` from this directory and open http://127.0.0.1:4173/.
+
+## Implemented
+
+- Cinematic homepage with Peter's existing photography and a masked opening reveal.
+- 25 portfolio entries with 278 photographs and 23 films, original project breakdowns, accessible full-screen galleries, direct hash links, next-project navigation, and Escape-to-close.
+- About section and capability accordions.
+- Shop coming-soon note in the footer.
+- Validated inquiry form that sends directly through Formspree; direct email and Instagram links.
+- Mobile layouts, keyboard focus states, reduced-motion support, and an explicit motion toggle.
+
+## Content and launch decisions
+
+This is a reviewable concept, not a deployed replacement. Original photography and campaign facts were obtained from Peter's public website on 2026-09-20. See `ASSET-SOURCES.md`. Project descriptions and credits are copied from the original portfolio; projects without descriptions remain photos-only. All 181 gallery entries across 14 source records are represented, plus two unique Moon Rocks featured/cover frames. About copy remains proposed copy for Peter to review.
+
+The inquiry form posts to Formspree and shows a confirmation on the page; Formspree emails each inquiry with the visitor's address as reply-to. To connect it, create a Formspree form and add its URL as the `action` of `#inquiry-form` in `dist/index.html` (for example `action="https://formspree.io/f/abcdwxyz"`). Until an action is set, submitting opens a prefilled email draft instead. A hidden `_gotcha` field filters simple spam bots. The form does not reserve dates or connect to a calendar.
+
+The shop lives in the footer as a coming-soon note with an inquiry link; the full shop section was removed from the page and navigation. It has no invented products, prices, checkout, or payment processing. Add confirmed products, fulfillment details, and a checkout provider before opening sales. Add motion work when the chosen reel and film credits are available.
+
+Fonts currently use Google Fonts (DM Sans throughout), with system fallbacks. All photography is stored locally. No analytics or tracking has been added. Review final copy, location, accessibility, privacy needs for any future integrations, and image selections before deployment.
+
+## Editing
+
+- `dist/index.html`: page structure and copy.
+- `dist/styles.css`: visual direction and responsive behavior.
+- `content/portfolio.json`: imported project text, ordered galleries, and original source URLs.
+- `scripts/build-portfolio.py`: regenerate the static project cards and `dist/portfolio-data.js` with `python3 scripts/build-portfolio.py`.
+- `dist/app.js`: project galleries, inquiry form, motion.
+- `dist/assets/`: photography.
+
+Deploy the contents of `dist/` to static hosting when ready. All internal paths are relative; project hash URLs require no server rewrites. For Sites deployment, register the site and set `static.directory` to `dist` at that time. Nothing has been registered or published yet.
+
+## September revision: motion and Studio
+
+The portfolio uses a changing photographic montage with a prominent Peter Sanjur identity, followed by a regular two-column gallery (one column on mobile). Project titles sit beneath the covers, and opened galleries preserve each photograph’s aspect ratio. The four annotated hero text overlays are removed. A 5.05-second opening name reveal plays once per browser session and can be skipped, dismissed with Escape, or replayed from the footer. Reduced-motion preferences bypass it; scroll-based image movement and project reveals also respect the motion toggle.
+
+`dist/studio.html` integrates the fuller ARTCORE Studio design recovered from the parent of commit `b0f4b08` in the user-supplied ARTCORE repository. The current source page is an unavailable/redirect stub. The original repository was read only and remains unchanged. The latest revision retains the original walkthrough, eight space photos, selected work examples, equipment information, and inquiry flow. Repeated tickers and feature lists, the secondary video transition, fixed moving title, and placeholder project labels have been removed. Native disclosures simplify the full gallery, rental details, and FAQs; photographs can be enlarged in a keyboard-accessible dialog.
+
+Studio is inquiry-only in this local concept. No availability, payment, or reservation system is connected. Older $75/hour pricing and cancellation commitments are not advertised as current; rates and terms are confirmed directly. Studio details, equipment, gallery credits, two-hour minimum, and permission to accept inquiries need review before deployment. Requests flow into the portfolio's email-draft form with Studio inquiry preselected.
+
+The Studio walkthrough is a locally encoded H.264 MP4 without audio. It pauses offscreen, when the tab is hidden, when a photograph is enlarged, or when the visitor pauses motion. The original source video remains unchanged.
+
+The Studio page uses plain `studio.css` and `studio.js`. It no longer loads the old Tailwind utilities; the previous utility build sources remain only as reference.
+
+Earlier portfolio designs are retained under `.design-history/v1/`, `.design-history/v2/`, `.design-history/v3/`, and `.design-history/v4/` for reference.
+
+The old CMS references a Moon Rocks video URL that failed to download. Its source is retained in `content/portfolio.json` under `unavailableSourceFilms`; no broken video player is shown. All project photographs downloaded and were checked. Gallery images use local, uncropped JPEGs up to 2000px; index covers use 1000px derivatives and lazy loading.
+
+## Homepage montage and future reel
+
+The opening uses five collections of three panels, including America, Julia, and Rebirth, and silent loops from Susan Shaw (On the Water) and Avara (Fall) in place of stills. It has staggered mask transitions every five seconds, manual previous/next controls, and an immediately available motion toggle. Autoplay pauses when offscreen, when a project is open, when a project link has keyboard focus, and when the tab is hidden. Reduced-motion preferences keep the imagery static. The skippable name intro reveals the name across a dark screen, holds it in place, then lowers it into position as two curtains rise to reveal the montage.
+
+`dist/hero-settings.js` controls the image selections, panel clips, interval, and optional reel. Panel clips are six-second, silent, 720px H.264 cuts in `dist/assets/hero/` with first-frame posters; they play only while motion is on and the hero is visible, and fall back to the poster if they fail to load. To add a reel, place a browser-compatible H.264 MP4 under `dist/assets/`, then set `videoSrc` and `videoPoster`. The default is still photography. A configured video loads muted and looping, with the same pause control; failed video loads restore the photo montage. For the edit, aim for a short loop that works without sound and keep key subjects away from the extreme edges for mobile crops.
+
+Validation for this revision: desktop and 390px mobile layouts, photo enlargement and Escape close, native FAQ, Studio inquiry preselection, montage autoplay/manual navigation and motion toggle, and the optional reel path with a local video fixture and a deliberately unavailable source to verify the photo fallback. Temporary test fixtures are removed after verification.
+
+## Refined opening and scroll motion
+
+The five-second opening reveals the name on a dark screen, holds, then lowers the name while two panels rise to reveal the montage. Replay is in the footer.
+
+The regular gallery layout has been restored. `dist/scroll-motion.js` adds one restrained entrance as headings, photographs, and copy enter from below: 24px upward movement over 900ms and a 4px blur clearing over 750ms, each with gentle easing. Elements remain clear after entering, with no word masks, scaling, or staggered gallery positions. Motion controls and reduced-motion preferences bypass the effect; keyboard focus immediately clears it.
+
+The About portrait is the user-supplied 2026 self-portrait, copied without modification to `dist/assets/peter-self-portrait-2026.jpg`. Its full landscape composition and original tone are preserved across desktop and mobile.
+
+The previous editorial layout is retained in `.design-history/v6/` for reference.
+
+## Shared accent color
+
+`dist/palette.css` adds a shared vermilion accent to both pages: `#ff5c35` on dark backgrounds, `#bd361b` on light backgrounds, and `#fae8df` for the Studio inquiry surface. Section labels, project arrows, contact links, and buttons share these colors. Header and hero type (PS, Contact, the hero label, and slideshow controls) stays white over the photographs.
+
+## Recent client work
+
+The newest entries are Ro$ama — My Forte (19 Instagram exports), Susan Shaw (19 films), Avara (two films), and Brick (nine supplied photographs). Susan Shaw is one client page with Pre-Spring, Spring, Summer, and Fall sections. Avara is one client page with Denim and Fall sections. Campaign buttons jump directly to each section. Ro$ama includes the supplied collaboration, lighting, and BTS credits.
+
+Films are H.264/AAC MP4 with playback controls and no autoplay. Campaign pages initially load poster images, creating a native video player only when a visitor presses Play; switching films or closing a project releases the previous player. Original image and video aspect ratios are preserved. Project and media counts are generated from content.
+
+`content/recent-project-intake.md` lists the selected Susan Shaw exports and all seventeen files in the Brick Web folder, identifying the nine included. Latest versions were inferred from export filenames; earlier iterations, clip batches, and alternate voiceover/overlay versions are excluded. `content/susan-shaw-import.json` and `content/recent-asset-sources.json` preserve exact source mappings. Original files remain unchanged.
+
+Peter confirmed billboard placements in Times Square, New York, and Los Angeles; both are included in the project description. No recent-project details remain pending.
+
+## Social preview
+
+`dist/index.html` includes Open Graph and Twitter card tags so shared links show `dist/assets/share/julia.jpg`, a 1200×630 crop of the Julia cover. The tags use absolute `https://www.petersanjur.com/` URLs; update them if the site launches on a different domain.

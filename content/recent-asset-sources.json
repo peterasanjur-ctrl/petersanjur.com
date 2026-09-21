@@ -1,0 +1,598 @@
+[
+  {
+    "project": "brick",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Brick Rebrand/Exports/Web/Brick Reshoot Photos-1.jpg",
+    "local": "dist/assets/projects/brick/01.jpg"
+  },
+  {
+    "project": "brick",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Brick Rebrand/Exports/Web/Brick Reshoot Photos-2.jpg",
+    "local": "dist/assets/projects/brick/02.jpg"
+  },
+  {
+    "project": "brick",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Brick Rebrand/Exports/Web/Brick Sporty.jpg",
+    "local": "dist/assets/projects/brick/03.jpg"
+  },
+  {
+    "project": "brick",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Brick Rebrand/Exports/Web/Brick_web-1.jpg",
+    "local": "dist/assets/projects/brick/04.jpg"
+  },
+  {
+    "project": "brick",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Brick Rebrand/Exports/Web/Brick_web-2.jpg",
+    "local": "dist/assets/projects/brick/05.jpg"
+  },
+  {
+    "project": "brick",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Brick Rebrand/Exports/Web/Brick_web-5.jpg",
+    "local": "dist/assets/projects/brick/06.jpg"
+  },
+  {
+    "project": "brick",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Brick Rebrand/Exports/Web/Brick_web-6.jpg",
+    "local": "dist/assets/projects/brick/07.jpg"
+  },
+  {
+    "project": "brick",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Brick Rebrand/Exports/Web/Brick_web-7.jpg",
+    "local": "dist/assets/projects/brick/08.jpg"
+  },
+  {
+    "project": "brick",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Brick Rebrand/Exports/Web/Brick_web-11.jpg",
+    "local": "dist/assets/projects/brick/09.jpg"
+  },
+  {
+    "project": "avara-denim",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Avara/Denim Campaign/Exports/Avara Montage 16x9 v.3.mov",
+    "local": "dist/assets/projects/avara-denim/film-1.mp4"
+  },
+  {
+    "project": "avara-fall",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Avara/Fall Campaign/exports/avara Fall montage v.4.mov",
+    "local": "dist/assets/projects/avara-fall/film-1.mp4"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8815 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/01.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8836 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/02.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8855 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/03.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8870 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/04.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8898 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/05.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8909 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/06.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8919 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/07.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8933 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/08.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8956 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/09.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL8997 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/10.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL9090 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/11.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL9116 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/12.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL9118 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/13.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL9155 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/14.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL9196 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/15.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL9211 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/16.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL9234 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/17.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL9257 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/18.jpg"
+  },
+  {
+    "project": "rosama-my-forte",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Ro$ama/Insta/Ro$ama_IMGL9299 - photo by Peter Sanjur.jpg",
+    "local": "dist/assets/projects/rosama-my-forte/19.jpg"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Pre-Spring Campaign Social/1-Exports/Al Fresco Lunch VO v.3.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-1.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Pre-Spring Campaign Social/1-Exports/Cabbage Patch v.1.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-2.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Pre-Spring Campaign Social/1-Exports/Easter Egg Painting Social.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-3.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Pre-Spring Campaign Social/1-Exports/Mahjong VO v.7.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-4.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Spring Campaign/1 - Exports/America Core v.3.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-5.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Spring Campaign/1 - Exports/Motherday interview v.2.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-6.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Spring Campaign/1 - Exports/The Art of Handmade v.3.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-7.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Spring Campaign/1 - Exports/The Jewerly Box v.1.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-8.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Spring Campaign/1 - Exports/Valen Interview V.1.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-9.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Spring Campaign/1 - Exports/is that my necklace v.1.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-10.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Spring Campaign/1 - Exports/valen crib v.2.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-11.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Summer Campaign/1 - Exports/American BBQ VO v.5.mov",
+    "local": "dist/assets/projects/susan-shaw/film-12.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Summer Campaign/1 - Exports/Bridge Game v.2.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-13.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Summer Campaign/1 - Exports/Sunbathing.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-14.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Summer Campaign/1 - Exports/fireworks v.2.mp4",
+    "local": "dist/assets/projects/susan-shaw/film-15.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Fall Campaign/exports/SS Fall Compilation v.4.mov",
+    "local": "dist/assets/projects/susan-shaw/film-16.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Fall Campaign/exports/Into the Field v.2.mov",
+    "local": "dist/assets/projects/susan-shaw/film-17.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Fall Campaign/exports/On the Water v.2.mov",
+    "local": "dist/assets/projects/susan-shaw/film-18.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Fall Campaign/exports/lodge living v.2.mov",
+    "local": "dist/assets/projects/susan-shaw/film-19.mp4"
+  },
+  {
+    "project": "susan-shaw",
+    "source": "/Volumes/PETER'S SSD/2026 Client/Susan Shaw/Pre-Spring Campaign Social/1-Exports/Al Fresco Lunch_01_00_41_09.jpg",
+    "local": "dist/assets/projects/susan-shaw/al-fresco-cover.jpg",
+    "usage": "Project cover supplied by Peter"
+  },
+  {
+    "project": "gtz-gallery",
+    "source": "/Volumes/PETER'S SSD/2026 Client/josue gtz gallery/exports/Josue the Artist_01_01_11_23.jpg",
+    "local": "dist/assets/projects/gtz-gallery/cover.jpg"
+  },
+  {
+    "project": "gtz-gallery",
+    "source": "/Volumes/PETER'S SSD/2026 Client/josue gtz gallery/exports/Josue the Artist v.1.mp4",
+    "local": "dist/assets/projects/gtz-gallery/film-1.mp4"
+  },
+  {
+    "project": "gtz-gallery",
+    "source": "/Volumes/PETER'S SSD/2026 Client/josue gtz gallery/exports/gtz gallery v.1.mp4",
+    "local": "dist/assets/projects/gtz-gallery/film-2.mp4"
+  },
+  {
+    "project": "america",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/america/carousel/this america-1.jpg",
+    "local": "dist/assets/projects/america/01.jpg"
+  },
+  {
+    "project": "america",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/america/carousel/this america-2.jpg",
+    "local": "dist/assets/projects/america/02.jpg"
+  },
+  {
+    "project": "america",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/america/carousel/this america-3.jpg",
+    "local": "dist/assets/projects/america/03.jpg"
+  },
+  {
+    "project": "america",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/america/carousel/this america-4.jpg",
+    "local": "dist/assets/projects/america/04.jpg"
+  },
+  {
+    "project": "america",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/america/carousel/this america-5.jpg",
+    "local": "dist/assets/projects/america/05.jpg"
+  },
+  {
+    "project": "america",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/america/carousel/this america-6.jpg",
+    "local": "dist/assets/projects/america/06.jpg"
+  },
+  {
+    "project": "america",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/america/Web/America_IMGL8775.jpg",
+    "local": "dist/assets/projects/america/07.jpg"
+  },
+  {
+    "project": "butterflies",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Butterflies/carousel pre/Insta/Butterflies_Insta-1.jpg",
+    "local": "dist/assets/projects/butterflies/01.jpg"
+  },
+  {
+    "project": "butterflies",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Butterflies/carousel pre/Insta/Butterflies_Insta-2.jpg",
+    "local": "dist/assets/projects/butterflies/02.jpg"
+  },
+  {
+    "project": "butterflies",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Butterflies/carousel pre/Insta/Butterflies_Insta-3.jpg",
+    "local": "dist/assets/projects/butterflies/03.jpg"
+  },
+  {
+    "project": "butterflies",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Butterflies/carousel pre/Insta/Butterflies_Insta-4.jpg",
+    "local": "dist/assets/projects/butterflies/04.jpg"
+  },
+  {
+    "project": "butterflies",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Butterflies/carousel pre/Insta/Butterflies_Insta-5.jpg",
+    "local": "dist/assets/projects/butterflies/05.jpg"
+  },
+  {
+    "project": "butterflies",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Butterflies/carousel pre/Insta/Butterflies_Insta-6.jpg",
+    "local": "dist/assets/projects/butterflies/06.jpg"
+  },
+  {
+    "project": "butterflies",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Butterflies/carousel pre/Insta/Butterflies_Insta-7.jpg",
+    "local": "dist/assets/projects/butterflies/07.jpg"
+  },
+  {
+    "project": "julia",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Julia/Output/Web/IMGL9323.jpg",
+    "local": "dist/assets/projects/julia/01.jpg"
+  },
+  {
+    "project": "julia",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Julia/Output/Web/IMGL9325.jpg",
+    "local": "dist/assets/projects/julia/02.jpg"
+  },
+  {
+    "project": "julia",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/Julia/Output/Web/IMGL9327.jpg",
+    "local": "dist/assets/projects/julia/03.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-1.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/01.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-2.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/02.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-3.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/03.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-4.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/04.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-5.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/05.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-6.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/06.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-7.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/07.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-8.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/08.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-9.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/09.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart-10.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/10.jpg"
+  },
+  {
+    "project": "near-to-my-heart",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/near my heart.jpg",
+    "local": "dist/assets/projects/near-to-my-heart/11.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-1.jpg",
+    "local": "dist/assets/projects/rebirth/01.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-2.jpg",
+    "local": "dist/assets/projects/rebirth/02.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-3.jpg",
+    "local": "dist/assets/projects/rebirth/03.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-4.jpg",
+    "local": "dist/assets/projects/rebirth/04.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-5.jpg",
+    "local": "dist/assets/projects/rebirth/05.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-6.jpg",
+    "local": "dist/assets/projects/rebirth/06.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-7.jpg",
+    "local": "dist/assets/projects/rebirth/07.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-8.jpg",
+    "local": "dist/assets/projects/rebirth/08.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-9.jpg",
+    "local": "dist/assets/projects/rebirth/09.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-10.jpg",
+    "local": "dist/assets/projects/rebirth/10.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-11.jpg",
+    "local": "dist/assets/projects/rebirth/11.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-12.jpg",
+    "local": "dist/assets/projects/rebirth/12.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-13.jpg",
+    "local": "dist/assets/projects/rebirth/13.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-14.jpg",
+    "local": "dist/assets/projects/rebirth/14.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-15.jpg",
+    "local": "dist/assets/projects/rebirth/15.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-16.jpg",
+    "local": "dist/assets/projects/rebirth/16.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-17.jpg",
+    "local": "dist/assets/projects/rebirth/17.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-18.jpg",
+    "local": "dist/assets/projects/rebirth/18.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-19.jpg",
+    "local": "dist/assets/projects/rebirth/19.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-20.jpg",
+    "local": "dist/assets/projects/rebirth/20.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-21.jpg",
+    "local": "dist/assets/projects/rebirth/21.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-22.jpg",
+    "local": "dist/assets/projects/rebirth/22.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-23.jpg",
+    "local": "dist/assets/projects/rebirth/23.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-24.jpg",
+    "local": "dist/assets/projects/rebirth/24.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-25.jpg",
+    "local": "dist/assets/projects/rebirth/25.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-26.jpg",
+    "local": "dist/assets/projects/rebirth/26.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-27.jpg",
+    "local": "dist/assets/projects/rebirth/27.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-28.jpg",
+    "local": "dist/assets/projects/rebirth/28.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-29.jpg",
+    "local": "dist/assets/projects/rebirth/29.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-30.jpg",
+    "local": "dist/assets/projects/rebirth/30.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-31.jpg",
+    "local": "dist/assets/projects/rebirth/31.jpg"
+  },
+  {
+    "project": "rebirth",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/rebirth/insta/Rebirth_Insta-32.jpg",
+    "local": "dist/assets/projects/rebirth/32.jpg"
+  },
+  {
+    "project": "in-solitude",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/in solitude-revised-1.jpg",
+    "local": "dist/assets/projects/in-solitude/01.jpg"
+  },
+  {
+    "project": "in-solitude",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/in solitude-revised-2.jpg",
+    "local": "dist/assets/projects/in-solitude/02.jpg"
+  },
+  {
+    "project": "in-solitude",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/in solitude-3.jpg",
+    "local": "dist/assets/projects/in-solitude/03.jpg"
+  },
+  {
+    "project": "in-solitude",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/in solitude-4.jpg",
+    "local": "dist/assets/projects/in-solitude/04.jpg"
+  },
+  {
+    "project": "in-solitude",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/in solitude-5.jpg",
+    "local": "dist/assets/projects/in-solitude/05.jpg"
+  },
+  {
+    "project": "in-solitude",
+    "source": "/Volumes/PETER'S SSD/2026 Personal/near to my heart/carousel/in solitude-6.jpg",
+    "local": "dist/assets/projects/in-solitude/06.jpg"
+  }
+]

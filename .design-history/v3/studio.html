@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARTCORE Studio — Peter Sanjur</title><meta name="description" content="Explore ARTCORE Studio, a Dallas industrial loft for photography, film, and creative productions. View the space, equipment, and inquire with Peter Sanjur."><meta name="theme-color" content="#f9f9f9"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Ctext x='7' y='45' font-family='Arial' font-size='38' fill='white'%3EPS%3C/text%3E%3C/svg%3E"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet"><link rel="stylesheet" href="studio-utilities.css"><link rel="stylesheet" href="studio.css"></head><body class="text-on-surface">
+<a class="studio-skip" href="#studio-main">Skip to content</a>
+<header class="studio-nav"><a class="studio-logo" href="index.html" aria-label="Peter Sanjur home">PS</a><nav aria-label="Main navigation"><a href="index.html#work">Work</a><a href="index.html#about">About</a><a href="studio.html" aria-current="page">Studio</a><a href="index.html#shop">Shop</a><a href="#studio-inquiry">Inquire ↗</a></nav></header>
+<main id="studio-main">
+    <!-- ── HERO TITLE — fixed over hero, outside overflow:hidden wrapper so it isn't clipped -->
+    <div id="hero-title-snap">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
+            <h1 class="font-headline font-black uppercase tracking-tighter leading-none" style="font-size: clamp(2.2rem, 11vw, 9rem);">
+                <span id="title-line1" class="block">ARTCORE</span>
+                <span id="title-line2" class="block">STUDIO</span>
+            </h1>
+            <div class="flex flex-col items-start md:items-end gap-4 shrink-0 pb-1">
+                <div class="text-left md:text-right">
+                    <span class="font-headline text-4xl md:text-5xl font-black price-val">By inquiry</span>
+                    <p class="font-label text-[10px] tracking-[0.2em] uppercase mt-1 price-min">2-Hour Minimum</p>
+                </div>
+                <a href="#studio-inquiry" class="snap-cta px-10 py-4 font-headline font-bold uppercase tracking-[0.2em] text-sm no-underline whitespace-nowrap">
+                    Inquire About the Studio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── HERO VIDEO ── full bleed, autoplay loop, silent -->
+    <div id="hero-wrapper" class="studio-hero" style="margin-top:64px; height:130vh; overflow:hidden; position:relative; z-index:1;">
+        <video
+            id="hero-video"
+            src="assets/studio/video/banner.mp4"
+            muted loop playsinline preload="metadata" poster="assets/studio/space/space-01.jpg"
+            aria-label="Artcore Studio Dallas — industrial loft photography studio walkthrough"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(20%);background:#000;">
+        </video>
+        <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.82) 100%);"></div>
+    </div>
+
+    <div id="info-strip" class="bg-white w-full" style="border-top: 2px solid #000; position: relative; z-index: 10; padding-top: 64px;">
+
+        <!-- Space reserved for the fixed title when it enters this section (height set by JS) -->
+        <div id="title-space"></div>
+
+        <!-- Scrolling ticker — full bleed, right above description -->
+        <div class="ticker-wrap">
+            <div class="ticker-track">
+                <!-- First copy -->
+                <span class="ticker-item">C-STANDS (8×)</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">SANDBAGS + WEIGHTS</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">LIGHT MODIFIERS</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">PRODUCTION CART</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">1 GBPS WI-FI</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">SNACKS + WATER</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">14FT CEILINGS</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">SOUTH-FACING WINDOWS</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">3,200 SQ FT</span><span class="ticker-sep">◆</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="ticker-item">C-STANDS (8×)</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">SANDBAGS + WEIGHTS</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">LIGHT MODIFIERS</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">PRODUCTION CART</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">1 GBPS WI-FI</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">SNACKS + WATER</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">14FT CEILINGS</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">SOUTH-FACING WINDOWS</span><span class="ticker-sep">◆</span>
+                <span class="ticker-item">3,200 SQ FT</span><span class="ticker-sep">◆</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ── STITCH 4: SHOWCASE GALLERY ── -->
+    <section class="bg-white py-32 px-8 overflow-hidden reveal">
+        <div class="max-w-screen-2xl mx-auto">
+            <!-- Title + Description side by side -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-16">
+                <div class="flex flex-col justify-between gap-8">
+                    <h2 class="font-headline font-black uppercase monolith-tracking leading-[0.8]" style="font-size:clamp(3.5rem,7vw,7rem);">
+                        3,200 SQ FT<br>
+                        <span class="text-zinc-300">INDUSTRIAL</span><br>
+                        LOFT //
+                    </h2>
+                </div>
+                <div class="flex flex-col justify-end gap-6">
+                    <p class="font-body text-base font-medium text-on-surface-variant leading-relaxed">A two-story industrial loft with 14-foot ceilings, concrete floors, and south-facing floor-to-ceiling windows that flood the space with consistent, diffused natural light all day.</p>
+                    <p class="font-body text-base font-medium text-on-surface-variant leading-relaxed">Built for photographers, directors, and creative teams who need a space with character. Exposed brick, raw concrete, and weathered textures give every shot a lived-in edge. Every booking includes the full floor, 1gig speeds, and a production cart so your crew can move fast and stay focused on the work.</p>
+                    <p class="font-body text-base font-medium text-on-surface-variant leading-relaxed">Ask about half-day, full-day, and multi-day productions. Dates, rates, and equipment availability are confirmed directly.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="bg-black text-white px-3 py-1 text-[9px] font-black monolith-label-tracking uppercase">3,200 Sq Ft</div>
+                        <div class="bg-black text-white px-3 py-1 text-[9px] font-black monolith-label-tracking uppercase">14-Ft Ceilings</div>
+                        <div class="bg-black text-white px-3 py-1 text-[9px] font-black monolith-label-tracking uppercase">South Light</div>
+                        <div class="bg-black text-white px-3 py-1 text-[9px] font-black monolith-label-tracking uppercase">1 Gbps Wi-Fi</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── LOFT ERA VIDEO — scroll-morphs circle → square ── -->
+    <section class="loft-era-section">
+        <div class="loft-era-stage">
+            <div class="loft-era-tag" aria-hidden="true">
+                <span class="loft-era-tag-text">grab a seat</span>
+                <svg class="loft-era-tag-arrow" viewBox="0 0 140 90" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Hand-drawn curve flowing down-right toward the video -->
+                    <path d="M 6 8 C 28 18, 42 22, 60 32 C 80 44, 98 58, 120 72" />
+                    <!-- Arrowhead -->
+                    <path d="M 104 60 L 120 72 L 102 78" />
+                </svg>
+            </div>
+            <video
+                id="loft-era-video"
+                class="loft-era-video"
+                src="assets/studio/video/loft-era.mp4"
+                muted loop playsinline preload="metadata" poster="assets/studio/space/space-01.jpg"
+                aria-label="Loft Era at Artcore Studio Dallas — interior teaser">
+            </video>
+        </div>
+    </section>
+
+    <!-- ── WHO IT'S FOR ── -->
+    <section style="position:relative; z-index:10; background:#fff;">
+        <div class="px-8 pt-16 pb-8 reveal">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-0">
+                <div>
+                    <p class="font-label text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-3">02 — USE CASES</p>
+                    <h2 class="font-headline font-black uppercase tracking-tighter leading-none" style="font-size:clamp(2.5rem,6vw,5rem);">Who It's For</h2>
+                </div>
+                <p class="font-body text-sm text-zinc-500 max-w-xs leading-relaxed pb-1">The space adapts to your project — here's what our bookings look like.</p>
+            </div>
+        </div>
+        <div class="use-case-grid">
+            <div class="use-case-card reveal">
+                <div class="use-case-num">01</div>
+                <div class="use-case-title">Photography</div>
+                <p class="use-case-desc">Portraits, editorial spreads, product shoots, and e-commerce campaigns. Consistent south-facing natural light all day.</p>
+                <span class="use-case-tag">Most Popular</span>
+            </div>
+            <div class="use-case-card reveal reveal-delay-1">
+                <div class="use-case-num">02</div>
+                <div class="use-case-title">Fashion & Lookbooks</div>
+                <p class="use-case-desc">Designer showcases, seasonal lookbooks, styling content. Exposed brick and raw concrete as your backdrop.</p>
+                <span class="use-case-tag">Fashion</span>
+            </div>
+            <div class="use-case-card reveal reveal-delay-2">
+                <div class="use-case-num">03</div>
+                <div class="use-case-title">Film & Video</div>
+                <p class="use-case-desc">Short films, music videos, brand spots, and BTS content. 14-ft ceilings give you room to rig.</p>
+                <span class="use-case-tag">Production</span>
+            </div>
+            <div class="use-case-card reveal">
+                <div class="use-case-num">04</div>
+                <div class="use-case-title">Private Events</div>
+                <p class="use-case-desc">Pop-ups, brand launches, intimate gatherings, and creative networking events in a space that looks the part.</p>
+                <span class="use-case-tag">Events</span>
+            </div>
+            <div class="use-case-card reveal reveal-delay-1">
+                <div class="use-case-num">05</div>
+                <div class="use-case-title">Content Creation</div>
+                <p class="use-case-desc">Creator shoots, social content days, and brand campaigns. 1 Gbps Wi-Fi for live streaming and fast uploads.</p>
+                <span class="use-case-tag">Creator</span>
+            </div>
+            <div class="use-case-card reveal reveal-delay-2" style="display:flex;flex-direction:column;justify-content:center;align-items:center;background:#000;color:#fff;gap:1.25rem;">
+                <p class="font-label text-xs text-center tracking-[0.2em] uppercase text-zinc-400 px-4">Something else in mind?</p>
+                <a href="mailto:info@petersanjur.com?subject=Studio%20inquiry" class="bg-white text-black font-headline font-black uppercase tracking-[0.18em] text-xs px-6 py-3 hover:bg-zinc-200 transition-colors no-underline">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── STUDIO SPACE-FRAME GALLERY — 8 rounded squares around a centered note ── -->
+    <section style="position:relative; z-index:10; background:#fff; border-top: 2px solid #000; border-bottom: 2px solid #000;">
+        <div class="space-frame">
+            <!-- Row 1 -->
+            <div class="space-tile reveal">
+                <img loading="lazy" alt="Artcore Studio Dallas — interior corner" src="assets/studio/space/space-01.jpg">
+            </div>
+            <div class="space-tile reveal reveal-delay-1">
+                <img loading="lazy" alt="Artcore Studio Dallas — natural light" src="assets/studio/space/space-02.jpg">
+            </div>
+            <div class="space-tile reveal reveal-delay-2">
+                <img loading="lazy" alt="Artcore Studio Dallas — loft detail" src="assets/studio/space/space-03.jpg">
+            </div>
+            <!-- Row 2: photo · empty (note overlays here) · photo -->
+            <div class="space-tile reveal">
+                <img loading="lazy" alt="Artcore Studio Dallas — exposed brick" src="assets/studio/space/space-04.jpg">
+            </div>
+            <div class="space-empty" aria-hidden="true"></div>
+            <div class="space-tile reveal reveal-delay-2">
+                <img loading="lazy" alt="Artcore Studio Dallas — south windows" src="assets/studio/space/space-06.jpg">
+            </div>
+            <!-- Row 3 -->
+            <div class="space-tile reveal">
+                <img loading="lazy" alt="Artcore Studio Dallas — set styling" src="assets/studio/space/space-07.jpg">
+            </div>
+            <div class="space-tile reveal reveal-delay-1">
+                <img loading="lazy" alt="Artcore Studio Dallas — production area" src="assets/studio/space/space-08.jpg">
+            </div>
+            <div class="space-tile reveal reveal-delay-2">
+                <img loading="lazy" alt="Artcore Studio Dallas — main floor" src="assets/studio/space/space-05.jpg">
+            </div>
+
+            <!-- Centered statement — line 2 fades in on scroll -->
+            <div class="space-frame-note">
+                <p class="note-line note-line-1">More Than</p>
+                <p class="note-line note-line-2">Four Walls</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ── FEATURED WORKS ── -->
+    <section style="position:relative; z-index:10; background:#fff; border-top: 2px solid #000;">
+        <div class="px-8 pt-14 pb-10 reveal">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <p class="font-label text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-3">03 — FROM THE SPACE</p>
+                    <h2 class="font-headline font-black uppercase tracking-tighter leading-none" style="font-size:clamp(2.5rem,6vw,5rem);">Works Shot Here</h2>
+                </div>
+                <p class="font-body text-sm text-zinc-500 max-w-xs leading-relaxed pb-1">Selected work by creatives who've used the space. <a href="mailto:info@petersanjur.com?subject=Studio%20inquiry" class="underline hover:text-black transition-colors">Submit yours →</a></p>
+            </div>
+        </div>
+        <div class="works-scroll-wrap">
+            <div class="works-item reveal">
+                <img loading="lazy" alt="Studio shoot — Artcore Dallas" src="assets/studio/works/work-01.jpg">
+                <div class="works-item-overlay">
+                    <p class="font-headline font-bold text-white text-sm uppercase tracking-tight">Studio study</p>
+                    <p class="font-label text-white/60 text-[10px] tracking-widest uppercase mt-0.5">Photography</p>
+                </div>
+            </div>
+            <div class="works-item reveal">
+                <img loading="lazy" alt="Studio shoot — Artcore Dallas" src="assets/studio/works/work-02.jpg">
+                <div class="works-item-overlay">
+                    <p class="font-headline font-bold text-white text-sm uppercase tracking-tight">Studio study</p>
+                    <p class="font-label text-white/60 text-[10px] tracking-widest uppercase mt-0.5">Fashion</p>
+                </div>
+            </div>
+            <div class="works-item reveal">
+                <img loading="lazy" alt="Studio shoot — Artcore Dallas" src="assets/studio/works/work-03.jpg">
+                <div class="works-item-overlay">
+                    <p class="font-headline font-bold text-white text-sm uppercase tracking-tight">Studio study</p>
+                    <p class="font-label text-white/60 text-[10px] tracking-widest uppercase mt-0.5">Film</p>
+                </div>
+            </div>
+            <div class="works-item reveal">
+                <img loading="lazy" alt="Studio shoot — Artcore Dallas" src="assets/studio/works/work-04.jpg">
+                <div class="works-item-overlay">
+                    <p class="font-headline font-bold text-white text-sm uppercase tracking-tight">Studio study</p>
+                    <p class="font-label text-white/60 text-[10px] tracking-widest uppercase mt-0.5">Editorial</p>
+                </div>
+            </div>
+            <div class="works-item reveal">
+                <img loading="lazy" alt="Studio shoot — Artcore Dallas" src="assets/studio/works/work-05.jpg">
+                <div class="works-item-overlay">
+                    <p class="font-headline font-bold text-white text-sm uppercase tracking-tight">Studio study</p>
+                    <p class="font-label text-white/60 text-[10px] tracking-widest uppercase mt-0.5">Brand Campaign</p>
+                </div>
+            </div>
+            <div class="works-item" style="background:#000; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; padding:2rem; text-align:center; flex:0 0 clamp(200px,20vw,280px);">
+                <p class="font-label text-xs text-zinc-500 tracking-[0.2em] uppercase">Your work<br/>here</p>
+                <a href="mailto:info@petersanjur.com?subject=Studio%20inquiry" class="border border-zinc-700 text-zinc-400 font-headline font-black uppercase tracking-[0.15em] text-xs px-5 py-2.5 hover:border-white hover:text-white transition-colors no-underline">Submit →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── WHAT'S INCLUDED + AVAILABLE TO RENT (side by side on desktop) ── -->
+    <div class="px-8" style="border-top: 2px solid #000; margin-top: 0; position:relative; z-index:10; background:#fff;">
+        <div class="lg:grid lg:grid-cols-2">
+
+            <!-- Col 1: What's Included -->
+            <div class="lg:pr-6">
+                <div class="acc-header w-full text-left flex flex-col pt-7 pb-7" style="cursor:default;" aria-expanded="true">
+                    <div class="flex items-center justify-between w-full mb-3">
+                        <span class="acc-meta font-label text-[10px] tracking-[0.3em] uppercase text-zinc-400">01 — INCLUDED WITH EVERY BOOKING</span>
+                        <div class="flex items-center gap-3">
+                            <span class="acc-pill font-label text-[10px] tracking-[0.2em] uppercase border border-zinc-200 text-zinc-400 px-2 py-1">6 ITEMS</span>
+                        </div>
+                    </div>
+                    <h2 class="font-headline text-4xl md:text-5xl font-black uppercase tracking-tighter">What's Included</h2>
+                </div>
+                <div id="included-body" class="accordion-body" style="display:block;">
+                    <div class="pt-2 pb-4">
+                        <div class="spec-row">
+                            <span class="spec-num">01</span>
+                            <span class="spec-name">C-Stands</span>
+                            <span class="spec-label">Full set of 8 · always on-site</span>
+                            <span class="spec-tag ml-4">Equipment</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-num">02</span>
+                            <span class="spec-name">Sandbags + Weights</span>
+                            <span class="spec-label">Full selection of counterweights</span>
+                            <span class="spec-tag ml-4">Equipment</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-num">03</span>
+                            <span class="spec-name">Light Modifiers</span>
+                            <span class="spec-label">Softboxes, flags, reflectors, diffusion</span>
+                            <span class="spec-tag ml-4">Equipment</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-num">04</span>
+                            <span class="spec-name">Production Cart</span>
+                            <span class="spec-label">Tape, clamps, gels, tools — fully stocked</span>
+                            <span class="spec-tag ml-4">Studio</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-num">05</span>
+                            <span class="spec-name">1 Gbps Wi-Fi</span>
+                            <span class="spec-label">Dedicated private studio network</span>
+                            <span class="spec-tag ml-4">Connectivity</span>
+                        </div>
+                        <div class="spec-row" style="border-bottom: none;">
+                            <span class="spec-num">06</span>
+                            <span class="spec-name">Snacks + Water</span>
+                            <span class="spec-label">Complimentary refreshments for your crew</span>
+                            <span class="spec-tag ml-4">Hospitality</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 2: Available to Rent -->
+            <div class="border-t-2 border-black lg:border-t-0 lg:border-l-2 lg:border-black lg:pl-6">
+                <div class="acc-header w-full text-left flex flex-col pt-7 pb-7" style="cursor:default;" aria-expanded="true">
+                    <div class="flex items-center justify-between w-full mb-3">
+                        <span class="acc-meta font-label text-[10px] tracking-[0.3em] uppercase text-zinc-400">02 — ADD-ONS</span>
+                        <div class="flex items-center gap-3">
+                            <span class="acc-pill font-label text-[10px] tracking-[0.2em] uppercase border border-zinc-200 text-zinc-400 px-2 py-1">6 Categories</span>
+                        </div>
+                    </div>
+                    <h2 class="font-headline text-4xl md:text-5xl font-black uppercase tracking-tighter">Available to Rent</h2>
+                </div>
+                <div id="rent-body" class="accordion-body" style="display:block;">
+                    <div class="pt-8 pb-4">
+                        <div class="spec-row">
+                            <span class="spec-num">+</span>
+                            <span class="spec-name">Lenses</span>
+                            <span class="spec-label">Primes, zooms, anamorphic &amp; cine glass</span>
+                            <span class="spec-tag ml-4">Optics</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-num">+</span>
+                            <span class="spec-name">Lighting</span>
+                            <span class="spec-label">Continuous LED, strobes &amp; accent fixtures</span>
+                            <span class="spec-tag ml-4">Lighting</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-num">+</span>
+                            <span class="spec-name">Power</span>
+                            <span class="spec-label">Portable generators &amp; V-mount batteries</span>
+                            <span class="spec-tag ml-4">Power</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-num">+</span>
+                            <span class="spec-name">Stabilization</span>
+                            <span class="spec-label">DJI Ronin RS4 · 3-axis gimbal</span>
+                            <span class="spec-tag ml-4">Support</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-num">+</span>
+                            <span class="spec-name">Audio</span>
+                            <span class="spec-label">Wireless mics &amp; podcast kits</span>
+                            <span class="spec-tag ml-4">Audio</span>
+                        </div>
+                        <div class="spec-row" style="border-bottom: none;">
+                            <span class="spec-num">+</span>
+                            <span class="spec-name">Atmospherics</span>
+                            <span class="spec-label">Haze &amp; smoke · controllable output</span>
+                            <span class="spec-tag ml-4">Misc</span>
+                        </div>
+                        <p class="font-body text-xs text-zinc-400 mt-5">Daily rates vary. Pricing confirmed with your quote — contact us with your specific needs.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /side-by-side grid -->
+    </div><!-- /px-8 wrapper -->
+
+    
+
+    <!-- ── FAQ ── -->
+    <section class="px-8 py-16 bg-surface reveal" style="position:relative; z-index:10; border-top: 2px solid #000;">
+        <div class="max-w-screen-lg mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div>
+                    <p class="font-label text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-3">04 — COMMON QUESTIONS</p>
+                    <h2 class="font-headline font-black uppercase tracking-tighter leading-none" style="font-size:clamp(2.5rem,6vw,5rem);">FAQ</h2>
+                </div>
+            </div>
+            <div id="faq-list">
+                <div class="faq-item">
+                    <button class="faq-btn" aria-expanded="false" data-faq="faq1">
+                        <span class="faq-q">How do I book the studio?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-body" id="faq1"><p class="faq-answer">Start a studio inquiry with your preferred date, duration, crew size, and any equipment needs. Peter will confirm availability and a quote directly. An inquiry does not reserve a date or take a payment.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-btn" aria-expanded="false" data-faq="faq2">
+                        <span class="faq-q">What's included with every booking?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-body" id="faq2">
+                        <p class="faq-answer">Every booking includes the full 3,200 sq ft floor, 8× C-stands, sandbags and weights, light modifiers (softboxes, flags, reflectors, diffusion), a fully-stocked production cart, 1 Gbps dedicated Wi-Fi, and complimentary snacks and water for your crew. Confirm any add-on costs with your quote.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-btn" aria-expanded="false" data-faq="faq3">
+                        <span class="faq-q">Is there parking on-site?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-body" id="faq3">
+                        <p class="faq-answer">Yes — there's dedicated parking directly adjacent to the loft at 1409 Botham Jean Blvd. Street parking is also available nearby. If you're bringing a large crew or production vehicle, reach out ahead of time and we'll coordinate.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-btn" aria-expanded="false" data-faq="faq4">
+                        <span class="faq-q">Can I bring my own gear and crew?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-body" id="faq4">
+                        <p class="faq-answer">Absolutely. You're welcome to bring your own cameras, lighting, and crew. The space is yours for your full booking window. If you need additional gear, check out our rentals — lenses, lighting rigs, audio, stabilization, and atmospherics are all available as add-ons.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-btn" aria-expanded="false" data-faq="faq5">
+                        <span class="faq-q">What's the cancellation policy?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-body" id="faq5"><p class="faq-answer">Booking and cancellation terms will be confirmed in writing with your quote, before you commit to a session.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-btn" aria-expanded="false" data-faq="faq6">
+                        <span class="faq-q">Do you offer multi-day or recurring rates?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-body" id="faq6">
+                        <p class="faq-answer">Yes. For productions that need the space for 2+ consecutive days, or creators looking to book regularly, ask about a custom rate. Get in touch at <a href="mailto:info@petersanjur.com?subject=Studio%20inquiry" class="underline">info@petersanjur.com</a> with your project scope and we'll put together a custom rate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PRICING ── -->
+    <section id="studio-inquiry" class="bg-black text-white pt-24 pb-32 px-8 text-center reveal" style="position:relative; z-index:10;">
+        <div class="max-w-3xl mx-auto flex flex-col items-center gap-10">
+            <p class="font-label text-[10px] tracking-[0.4em] uppercase text-zinc-500">PLAN YOUR SESSION</p>
+            <h3 class="font-headline font-black leading-none tracking-tighter" style="font-size: clamp(5rem, 14vw, 10rem);">Let’s talk.</h3>
+            <div class="flex flex-col items-center gap-2">
+                <p class="font-label text-sm tracking-[0.2em] uppercase text-zinc-400">Studio access & equipment // By inquiry</p>
+                <p class="font-body text-xs text-zinc-600 mt-1">1409 Botham Jean Blvd, Dallas TX · Dates and rates confirmed directly</p>
+            </div>
+            <div class="flex flex-col md:flex-row gap-4 mt-2">
+                <a href="index.html?inquiry=studio#contact" class="bg-white text-black font-headline font-black uppercase tracking-[0.2em] text-sm px-14 py-5 hover:bg-zinc-200 transition-colors no-underline">
+                    Inquire About the Studio
+                </a>
+                <a href="mailto:info@petersanjur.com?subject=Studio%20inquiry" class="border border-zinc-700 text-zinc-400 font-headline font-black uppercase tracking-[0.2em] text-sm px-14 py-5 hover:border-white hover:text-white transition-colors no-underline">
+                    Ask a Question
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main><footer class="studio-footer"><a href="index.html">← Peter Sanjur / Portfolio</a><button id="studio-motion" type="button" aria-pressed="false">Pause motion</button><a href="mailto:info@petersanjur.com?subject=Studio%20inquiry">info@petersanjur.com ↗</a></footer><script src="studio.js" defer></script></body></html>

@@ -1,0 +1,26 @@
+/* Shared vermilion accent: lighter on dark surfaces, deeper on paper. */
+:root{--accent:#ff5c35;--accent-ink:#bd361b;--accent-paper:#fae8df}
+::selection{background:var(--accent);color:#080808}
+.site-header{mix-blend-mode:normal}
+.site-header:not(.is-solid){background:linear-gradient(#080808b8,transparent)}
+.work-heading h2>span,.work-heading>.eyebrow,.project-type>span{color:var(--accent)}
+.project-open,.solid-button{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.solid-button:hover{background:transparent;color:var(--accent)}
+.about-intro>.eyebrow,.about-intro h2 em,.about-section .text-link,.shop-label>.eyebrow,.shop-section .text-link{color:var(--accent-ink)}
+.capabilities summary>span:first-child,.capabilities .details-icon{color:var(--accent-ink)}
+.contact-heading>.eyebrow,.contact-heading h2 em,.email-link,.social-link,.contact-section label>span{color:var(--accent)}
+.contact-section input:focus-visible,.contact-section select:focus-visible,.contact-section textarea:focus-visible{outline-color:var(--accent)}
+footer .wordmark,#replay-intro,#motion-toggle,.footer-shop .eyebrow,.footer-shop .text-link,.next-project .eyebrow,.story-end .text-link{color:var(--accent)}
+#inquiry-status.is-error{color:var(--accent)}
+.story-heading>.eyebrow,.story-breakdown>.eyebrow{color:var(--accent-ink)}
+/* Studio uses the same accent for wayfinding, equipment details, and inquiry. */
+.studio-logo,.studio-nav nav a[aria-current],.studio-nav nav a:last-child{color:var(--accent-ink)}
+.studio-hero-copy>.eyebrow,.studio-hero-bottom a{color:var(--accent)}
+.studio-intro .eyebrow,.section-heading,.studio-faq .eyebrow,.studio-facts dt,h2#space-title em{color:var(--accent-ink)}
+.studio-work .section-heading{color:var(--accent)}
+.space-photo>span{background:var(--accent);color:var(--ink)}
+.studio-inquiry{background:var(--accent-paper)}
+.studio-inquiry>.eyebrow,.studio-email{color:var(--accent-ink)}
+.studio-cta{background:var(--accent-ink);color:#fff}
+.studio-cta:hover{background:#982b16}
+.studio-footer a{color:var(--accent)}

@@ -13,14 +13,3 @@
 footer .wordmark,#replay-intro,#motion-toggle,.footer-shop .eyebrow,.footer-shop .text-link,.next-project .eyebrow,.story-end .text-link{color:var(--accent)}
 #inquiry-status.is-error{color:var(--accent)}
 .story-heading>.eyebrow,.story-breakdown>.eyebrow{color:var(--accent-ink)}
-/* Studio uses the same accent for wayfinding, equipment details, and inquiry. */
-.studio-logo,.studio-nav nav a[aria-current],.studio-nav nav a:last-child{color:var(--accent-ink)}
-.studio-hero-copy>.eyebrow,.studio-hero-bottom a{color:var(--accent)}
-.studio-intro .eyebrow,.section-heading,.studio-faq .eyebrow,.studio-facts dt,h2#space-title em{color:var(--accent-ink)}
-.studio-work .section-heading{color:var(--accent)}
-.space-photo>span{background:var(--accent);color:var(--ink)}
-.studio-inquiry{background:var(--accent-paper)}
-.studio-inquiry>.eyebrow,.studio-email{color:var(--accent-ink)}
-.studio-cta{background:var(--accent-ink);color:#fff}
-.studio-cta:hover{background:#982b16}
-.studio-footer a{color:var(--accent)}

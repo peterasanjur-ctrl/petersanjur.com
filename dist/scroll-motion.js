@@ -3,7 +3,7 @@
   const root=document.documentElement;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const enabled=()=>!reduced.matches&&!root.classList.contains('motion-off')&&!root.classList.contains('studio-motion-off');
-  const targets=[...document.querySelectorAll('main h2,.project,.portrait,.about-copy>p,.contact-copy>h3,.contact-copy>p,.shop-main p,.intro-copy>p,.space-gallery>.space-photo,.studio-work-grid>figure')];
+  const targets=[...document.querySelectorAll('main h2,.project,.portrait,.about-copy>p,.contact-copy>h3,.contact-copy>p,.shop-main p,.statement,.space-row,.studio-facts>div,.gear-grid>div,.made-grid .space-photo,.faq-list details')];
   // Content already onscreen (including direct anchor arrivals) stays settled.
   const waiting=targets.filter(element=>element.getBoundingClientRect().top>=innerHeight);
   const observer=new IntersectionObserver(entries=>{

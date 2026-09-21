@@ -7,7 +7,7 @@
   const pause=document.querySelector('#montage-pause');
   const previous=document.querySelector('#montage-prev');
   const next=document.querySelector('#montage-next');
-  let collection=0,timer,visible=true,request=0,usingVideo=false;
+  let collection=0,timer,visible=true,request=0,usingVideo=false,currentClip=null;
   const total=heroSettings.collections.length;
   const label=index=>`${String(index+1).padStart(2,'0')} / ${String(total).padStart(2,'0')}`;
   function canAnimate(){return motionEnabled&&opening.hidden&&visible&&!document.hidden&&!dialog.open;}
@@ -18,7 +18,11 @@
     pause.setAttribute('aria-pressed',String(!motionEnabled));
     hero.querySelectorAll('.montage-panel video').forEach(clip=>{if(canAnimate()&&!usingVideo)clip.play().catch(()=>{});else clip.pause();});
     if(usingVideo){if(canPlay())reel.play().catch(()=>{});else reel.pause();}
-    else if(canPlay())timer=setTimeout(()=>show(collection+1),heroSettings.interval);
+    else if(canPlay()){
+      // A slide with a clip stays up until the clip has played through.
+      const remaining=currentClip?(currentClip.duration-currentClip.currentTime)*1000:0;
+      timer=setTimeout(()=>show(collection+1),Math.max(heroSettings.interval,remaining||0));
+    }
   }
   function loadImage(src){
     const img=new Image();img.src=src;
@@ -54,12 +58,13 @@
       panel.setAttribute('aria-label',`View ${project.title}`);
       const item=media[i];
       if(item.tagName==='IMG')item.alt=`${project.title} — ${project.client||project.category}`;
-      item.className='montage-image-in';item.style.animationDelay=`${i*90}ms`;
+      item.className='montage-image-in';item.style.animationDelay=`${i*90}ms`;item.style.objectPosition=heroSettings.positions?.[keys[i]]||'';
       panel.append(item);panel.href=`#project/${keys[i]}`;panel.dataset.project=keys[i];
       panel.querySelector('span').textContent=`${project.title} ↗`;
       setTimeout(()=>old.forEach(item=>item.remove()),1100);
     });
     collection=target;count.textContent=label(collection);
+    currentClip=media.find(item=>item.tagName==='VIDEO')||null;
     schedule();
   }
   previous.addEventListener('click',()=>show(collection-1));

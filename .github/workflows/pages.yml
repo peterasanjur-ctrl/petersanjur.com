@@ -24,6 +24,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      # Stamp local CSS and JS links with the commit, so browsers never mix an old
+      # cached page with newly published scripts.
+      - name: Version asset links
+        run: |
+          v="${GITHUB_SHA::7}"
+          sed -i -E "s#(href|src)=\"((\.\./\.\./)?[a-z0-9-]+\.(css|js))\"#\1=\"\2?v=$v\"#g" dist/*.html dist/portfolio/*/index.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

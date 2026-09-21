@@ -183,9 +183,15 @@ function startIntro(manual=false){
   const rect=target.getBoundingClientRect();
   const type=getComputedStyle(target);
   const name=opening.querySelector('.opening-name');
+  // Rebuild the name as one run of text with its caret, so an older cached copy
+  // of the page markup can't break the intro.
+  name.textContent=target.textContent.trim();
+  let caret=opening.querySelector('.opening-caret');
+  if(!caret){caret=document.createElement('span');caret.className='opening-caret';caret.setAttribute('aria-hidden','true');name.after(caret);}
   Object.assign(name.style,{left:`${rect.left}px`,top:`${rect.top}px`,width:`${rect.width}px`,fontSize:type.fontSize,lineHeight:type.lineHeight,letterSpacing:type.letterSpacing});
   opening.hidden=false;
   document.documentElement.classList.add('intro-running');
+  try{
   const animate=(element,frames,options)=>{
     const animation=element.animate(frames,{fill:'both',...options});
     introAnimations.push(animation);return animation;
@@ -200,7 +206,6 @@ function startIntro(manual=false){
   const perLetter=85,typing=perLetter*(stops.length-1),typeStart=250,reveal=typeStart+typing+550;
   const step=values=>values.map((value,i)=>({...value,offset:i/(values.length-1),easing:'steps(1,end)'}));
   animate(name,step(stops.map(stop=>({clipPath:`inset(-30% ${box.width-stop}px -30% -5%)`}))),{duration:typing,delay:typeStart});
-  const caret=opening.querySelector('.opening-caret');
   Object.assign(caret.style,{left:`${box.left}px`,top:`${box.top+box.height*.08}px`,height:`${box.height*.84}px`,width:`${Math.max(4,box.height*.07)}px`});
   animate(caret,step(stops.map(stop=>({transform:`translateX(${stop+box.height*.05}px)`}))),{duration:typing,delay:typeStart});
   animate(caret,[{opacity:1},{opacity:0}],{duration:150,delay:reveal-150});
@@ -210,6 +215,10 @@ function startIntro(manual=false){
   ],{duration:1100,delay:reveal+50+i*120,easing:'cubic-bezier(.65,0,.2,1)'}));
   if(manual)opening.querySelector('.skip-intro').focus({preventScroll:true});
   introTimer=setTimeout(finishIntro,reveal+1300);
+  }catch(error){
+    // Never leave visitors behind a blank overlay: show the finished page instead.
+    finishIntro();return;
+  }
   document.dispatchEvent(new Event('portfolio-intro-change'));
 }
 function updateMotion(){

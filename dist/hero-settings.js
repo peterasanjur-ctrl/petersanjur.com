@@ -3,7 +3,7 @@
 const heroSettings = {
   videoSrc: '',
   videoPoster: 'assets/projects/moonrocks/cover.jpg',
-  interval: 5000,
+  interval: 3000,
   images: {
   "rosama-my-forte": "assets/projects/rosama-my-forte/12.jpg",
   "dream-state-series": "assets/projects/dream-state-series/03.jpg",

@@ -184,32 +184,32 @@ function startIntro(manual=false){
   const type=getComputedStyle(target);
   const name=opening.querySelector('.opening-name');
   Object.assign(name.style,{left:`${rect.left}px`,top:`${rect.top}px`,width:`${rect.width}px`,fontSize:type.fontSize,lineHeight:type.lineHeight,letterSpacing:type.letterSpacing});
-  const scale=innerWidth<761?.82:.62;
-  const x=(document.documentElement.clientWidth-rect.width*scale)/2-rect.left;
-  const y=innerHeight*.43-rect.height*scale/2-rect.top;
   opening.hidden=false;
   document.documentElement.classList.add('intro-running');
   const animate=(element,frames,options)=>{
     const animation=element.animate(frames,{fill:'both',...options});
     introAnimations.push(animation);return animation;
   };
-  const ease='cubic-bezier(.22,.75,.18,1)';
-  // Reveal → hold → descend. Explicit delays keep the quiet hold independent
-  // of the easing used for the final movement.
-  animate(name,[
-    {transform:`translate(${x}px,${y}px) scale(${scale})`},
-    {transform:'translate(0,0) scale(1)'}
-  ],{duration:1750,delay:3100,easing:'cubic-bezier(.65,0,.2,1)'});
-  name.querySelectorAll('.opening-word>span').forEach((word,i)=>animate(word,[
-    {clipPath:'inset(0 100% 0 0)',transform:'translateY(8px)'},
-    {clipPath:'inset(0 0 0 0)',transform:'translateY(0)'}
-  ],{duration:1250,delay:300+i*300,easing:ease}));
-  animate(opening.querySelector('.opening-veil'),[{opacity:1},{opacity:0}],{duration:1,delay:3150});
+  // Type the name in place at full size: measure where each letter ends, then
+  // step a clip and a caret across those points. The text stays one run, so it
+  // matches the real title exactly when the intro hands over.
+  const text=name.firstChild,box=name.getBoundingClientRect(),range=document.createRange();
+  // Tight negative tracking pulls each measured edge inside the glyph, so add it back.
+  const tracking=Math.max(0,-parseFloat(type.letterSpacing)||0)+2;
+  const stops=[0,...[...text.data].map((_,i)=>{range.setStart(text,0);range.setEnd(text,i+1);return range.getBoundingClientRect().right-box.left+tracking;})];
+  const perLetter=85,typing=perLetter*(stops.length-1),typeStart=250,reveal=typeStart+typing+550;
+  const step=values=>values.map((value,i)=>({...value,offset:i/(values.length-1),easing:'steps(1,end)'}));
+  animate(name,step(stops.map(stop=>({clipPath:`inset(-30% ${box.width-stop}px -30% -5%)`}))),{duration:typing,delay:typeStart});
+  const caret=opening.querySelector('.opening-caret');
+  Object.assign(caret.style,{left:`${box.left}px`,top:`${box.top+box.height*.08}px`,height:`${box.height*.84}px`,width:`${Math.max(4,box.height*.07)}px`});
+  animate(caret,step(stops.map(stop=>({transform:`translateX(${stop+box.height*.05}px)`}))),{duration:typing,delay:typeStart});
+  animate(caret,[{opacity:1},{opacity:0}],{duration:150,delay:reveal-150});
+  animate(opening.querySelector('.opening-veil'),[{opacity:1},{opacity:0}],{duration:1,delay:reveal});
   opening.querySelectorAll('.opening-panels>span').forEach((panel,i)=>animate(panel,[
     {transform:'translateY(0)'},{transform:'translateY(-101%)'}
-  ],{duration:1500,delay:3200+i*180,easing:'cubic-bezier(.65,0,.2,1)'}));
+  ],{duration:1100,delay:reveal+50+i*120,easing:'cubic-bezier(.65,0,.2,1)'}));
   if(manual)opening.querySelector('.skip-intro').focus({preventScroll:true});
-  introTimer=setTimeout(finishIntro,5050);
+  introTimer=setTimeout(finishIntro,reveal+1300);
   document.dispatchEvent(new Event('portfolio-intro-change'));
 }
 function updateMotion(){
@@ -249,9 +249,9 @@ window.addEventListener('keydown',event=>{if(!opening.hidden&&['ArrowDown','Page
 updateMotion();
 if(motionEnabled){
   let seenIntro=false;
-  try { seenIntro=sessionStorage.getItem('peter-intro-framing-v3')==='yes'; } catch {}
+  try { seenIntro=sessionStorage.getItem('peter-intro-typed-v1')==='yes'; } catch {}
   if((!location.hash||location.hash==='#')&&!seenIntro){
     startIntro();
-    try { sessionStorage.setItem('peter-intro-framing-v3','yes'); } catch {}
+    try { sessionStorage.setItem('peter-intro-typed-v1','yes'); } catch {}
   }
 }

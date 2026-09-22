@@ -1920,7 +1920,7 @@
     "category": "Fashion",
     "year": "2025",
     "location": "New York City, NY",
-    "description": "Shot on the streets of New York City, IDOL is a campaign for Lodi Studios — a fashion brand founded and modeled by Xavier Mendoza. The project leaned entirely on natural light, using reflections off city windows at sunset to create dynamic, flash-like imagery without the need for artificial lighting. Only one frame used flash — the rest came from chasing golden-hour light and letting the city do the work.\n\nI photographed Xavier on a freezing 40-degree day, carrying far more gear than I needed — lights, cameras, even a laptop — none of which made it out of the bag. But despite the cold and the weight, we created something clean, cinematic, and deeply aligned with Xavier’s vision for Lodi Studios.\n\nCredits:\nPhotography – Peter Sanjur\nModel / Brand Owner – Xavier Mendoza\nBrand – Lodi Studios\nLocation – New York City",
+    "description": "Shot on the streets of New York City, Idol is a campaign for Lodi Studios, the fashion brand founded and modeled by Xavier Mendoza. The images lean entirely on natural light, using sunset reflections off city windows to create dynamic, flash-like frames. Only one shot used flash; the rest came from chasing golden hour and letting the city do the work.\n\nWe shot on a freezing 40-degree day, and I carried far more gear than I needed (lights, cameras, even a laptop), none of which left the bag. Despite the cold, we made something clean, cinematic, and true to Xavier’s vision for the brand.",
     "source": "https://www.petersanjur.com/portfolio/lodi-studios",
     "originalGalleryCount": 8,
     "cover": {
@@ -1979,7 +1979,21 @@
         "src": "assets/projects/lodi-studios/08.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model & brand owner",
+        "name": "Xavier Mendoza"
+      },
+      {
+        "role": "Client",
+        "name": "Lodi Studios"
+      }
+    ]
   },
   {
     "key": "roadkill",
@@ -1988,7 +2002,7 @@
     "category": "Fashion",
     "year": "2024",
     "location": "Dallas, TX",
-    "description": "Shot at Production House Studio in Dallas, Roadkill is a loud, pop-infused visual narrative inspired by queer identity and the saturated chaos of 1980s Americana. Creative direction and styling came from Kyle Doherty, who helped bring the concept of two renegades on the run to life. Complete with a 1969 Thunderbird as our backdrop. With bold makeup by Kelsey and performances from models Lily, Savage, and more, the shoot leaned into dramatic lighting, vivid color, and a sense of cinematic rebellion.\n\nCredits:\nPhotography & Lighting – Peter Sanjur\nCreative Director / Stylist – Kyle Doherty\nMakeup – Kelsey Ikler\nModels – Lily Savage",
+    "description": "Shot at Production House in Dallas, Roadkill is a loud, pop-infused story inspired by queer identity and the saturated chaos of 1980s Americana. Kyle Doherty led creative direction and styling around the idea of two renegades on the run, with a 1969 Thunderbird as the backdrop.\n\nWith bold makeup by Kelsey Ikler, the shoot leaned into dramatic lighting, vivid color, and a sense of cinematic rebellion.",
     "source": "https://www.petersanjur.com/portfolio/roadkill",
     "originalGalleryCount": 17,
     "cover": {
@@ -2101,7 +2115,25 @@
         "src": "assets/projects/roadkill/17.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography & lighting",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Creative direction & styling",
+        "name": "Kyle Doherty"
+      },
+      {
+        "role": "Makeup",
+        "name": "Kelsey Ikler"
+      },
+      {
+        "role": "Models",
+        "name": "Lily Savage"
+      }
+    ]
   },
   {
     "key": "it-girl-roxylynn",
@@ -2110,7 +2142,7 @@
     "category": "Personal Work",
     "year": "2024",
     "location": "New York City, NY",
-    "description": "Shot in Chelsea and Hell’s Kitchen, It Girl is a personal editorial captured in New York City featuring one of my favorite collaborators, Roxy. We’ve worked together on four or five projects now — more than any other model I’ve shot with — and her consistency, talent, and presence always elevate the final product.\n\nThis shoot focused on stylized fashion, bold texture, and a deep attention to detail. The images that came out of this day are some of my personal favorites to date — raw, clean, and full of energy. Sometimes the best work happens when the collaboration just clicks, and this was one of those times.\n\nCredits:\nPhotography – Peter Sanjur\nModel – Roxy\nLighting Asst. - Jacob Leeks\nLocation – New York City (Chelsea, Hell’s Kitchen)",
+    "description": "Shot in Chelsea and Hell’s Kitchen, It Girl is a personal editorial in New York City with Roxy, one of my favorite collaborators. We’ve made four or five projects together, more than with any other model, and her consistency, talent, and presence always lift the final work.\n\nThe shoot focused on stylized fashion, bold texture, and close attention to detail. These are some of my favorite images to date: raw, clean, and full of energy. Sometimes the collaboration just clicks, and this was one of those days.",
     "source": "https://www.petersanjur.com/portfolio/it-girl-roxylynn",
     "originalGalleryCount": 17,
     "cover": {
@@ -2223,7 +2255,21 @@
         "src": "assets/projects/it-girl-roxylynn/17.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Roxy"
+      },
+      {
+        "role": "Lighting assistant",
+        "name": "Jacob Leeks"
+      }
+    ]
   },
   {
     "key": "breannaespina",
@@ -2406,7 +2452,7 @@
     "category": "Personal Work",
     "year": "2024",
     "location": "Dallas, TX",
-    "description": "This personal portrait session was shot in Dallas with Audrey, someone I’d been wanting to collaborate with for a while. We kept the setup minimal — just sunset light pouring through the windows of my friend’s apartment, which happens to be beautifully designed thanks to his work as an interior designer.\n\nThe shoot focused on softness and stillness, letting Audrey move naturally through the light. I handled all the lighting, photography, and editing, and the result was a quiet, refined series that lets her presence speak for itself.\n\nCredits:\nPhotography, Lighting, Editing – Peter Sanjur\nModel – Audrey\nLocation – Dallas, TX",
+    "description": "A personal portrait session in Dallas with Audrey, someone I’d wanted to collaborate with for a while. We kept the setup minimal: sunset light pouring through the windows of a friend’s apartment, beautifully designed thanks to his work as an interior designer.\n\nThe shoot focused on softness and stillness, letting Audrey move naturally through the light. The result is a quiet, refined series that lets her presence speak for itself.",
     "source": "https://www.petersanjur.com/portfolio/audrey-given",
     "originalGalleryCount": 6,
     "cover": {
@@ -2453,7 +2499,17 @@
         "src": "assets/projects/audrey-given/06.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography, lighting & editing",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Audrey"
+      }
+    ]
   },
   {
     "key": "sunset-vistas",
@@ -2534,7 +2590,7 @@
     "category": "Editorial",
     "year": "2024",
     "location": "Dallas, TX",
-    "description": "Shot in Dallas, Chevy Girl is a personal editorial created in celebration of my friend Emily’s graduation. More than just grad photos, the shoot pays homage to lowrider culture and Emily’s heritage — a visual tribute built around pride, style, and legacy. With a pristine 1978 Coupe DeVille lent to us by Cadillac Mike, the scene came together with a nostalgic yet confident tone.\n\nI handled photography, lighting, and editing, while Cordell assisted on set to help bring the lighting to life. What started as a personal request evolved into one of my favorite explorations of culture and identity through image-making.\n\nCredits:\nPhotography, Lighting, Editing – Peter Sanjur\nModel – Emily\nLighting Assistant – Cordell\nVehicle (1978 Coupe DeVille) – Cadillac Mike",
+    "description": "Shot in Dallas, Chevy Girl is a personal editorial made to celebrate my friend Emily’s graduation. More than grad photos, it pays homage to lowrider culture and Emily’s heritage, a tribute built around pride, style, and legacy. A pristine 1978 Coupe DeVille, lent to us by Cadillac Mike, gave the scene its nostalgic, confident tone.\n\nCordell assisted on set to bring the lighting to life. What started as a personal request became one of my favorite explorations of culture and identity through image-making.",
     "source": "https://www.petersanjur.com/portfolio/chevy-girl",
     "originalGalleryCount": 12,
     "cover": {
@@ -2617,6 +2673,24 @@
         "src": "assets/projects/chevy-girl/12.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography, lighting & editing",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Emily"
+      },
+      {
+        "role": "Lighting assistant",
+        "name": "Cordell"
+      },
+      {
+        "role": "1978 Coupe DeVille",
+        "name": "Cadillac Mike"
+      }
+    ]
   }
 ]

@@ -90,8 +90,11 @@ if(booking){
   function syncHours(){
     if(minutes(end.value)<=minutes(start.value)){const next=[...end.options].find(o=>minutes(o.value)>=minutes(start.value)+120);if(next)end.value=next.value;}
     const hours=(minutes(end.value)-minutes(start.value))/60;
-    hoursNote.textContent=hours<2?`${hours} hr — 2 hour minimum`:`${hours} hours × $125 = $${(hours*125).toLocaleString('en-US',{minimumFractionDigits:hours%1?2:0})}`;
+    hoursNote.textContent=hours<2?`${hours} hr — 2 hour minimum`:`${hours} hours`;
     hoursNote.classList.toggle('is-short',hours<2);
+    const total=Math.max(hours,0)*125;
+    booking.querySelector('#booking-math').textContent=`${Math.max(hours,0)} hrs × $125 / hr`+(hours<2?' — 2 hr minimum':'');
+    booking.querySelector('#booking-total').textContent=`$${total.toLocaleString('en-US',{minimumFractionDigits:total%1?2:0})}`;
     return hours;
   }
   start.addEventListener('change',syncHours);end.addEventListener('change',syncHours);syncHours();

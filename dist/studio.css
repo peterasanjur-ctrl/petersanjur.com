@@ -228,3 +228,6 @@ dialog p{font-family:var(--mono);font-size:10px;text-transform:uppercase;text-al
 .booking-form.is-sent>:not(.booking-sent){display:none}
 .form-trap{position:absolute!important;left:-9999px}
 @media(max-width:760px){.booking-when{grid-template-columns:1fr 1fr}.booking-date{grid-column:1/-1}.booking-row{grid-template-columns:1fr}.booking-bottom{flex-direction:column;align-items:stretch}.booking-form button[type=submit]{width:100%}}
+.booking-total{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin-top:8px}
+.booking-math{color:var(--muted);margin-top:6px}
+.booking-total output{font-family:var(--display);font-weight:700;font-size:clamp(38px,4vw,56px);letter-spacing:-.04em;line-height:.9}

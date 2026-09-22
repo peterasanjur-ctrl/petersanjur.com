@@ -31,7 +31,7 @@ function renderProject(key) {
   const imageCount=p.images.length+sections.reduce((sum,c)=>sum+(c.images||[]).length,0);
   const filmCount=p.films.length+sections.reduce((sum,c)=>sum+(c.films||[]).length,0);
   const mediaSummary=[imageCount?`${imageCount} photographs`:'',filmCount?`${filmCount} film${filmCount===1?'':'s'}`:''].filter(Boolean).join(' + ');
-  const credits=(p.credits||[]).map(credit=>`<div><dt>${escapeHTML(credit.role)}</dt><dd>${escapeHTML(credit.name)}</dd></div>`).join('')+(p.press||[]).map(f=>`<div><dt>Featured in</dt><dd><a class="quiet-link" href="${escapeHTML(f.url)}" target="_blank" rel="noopener">${escapeHTML(f.name)}</a></dd></div>`).join('');
+  const credits=(p.credits||[]).map(credit=>`<div><dt>${escapeHTML(credit.role)}</dt><dd>${credit.url?`<a class="quiet-link" href="${escapeHTML(credit.url)}" target="_blank" rel="noopener">${escapeHTML(credit.name)}</a>`:escapeHTML(credit.name)}</dd></div>`).join('')+(p.press||[]).map(f=>`<div><dt>Featured in</dt><dd><a class="quiet-link" href="${escapeHTML(f.url)}" target="_blank" rel="noopener">${escapeHTML(f.name)}</a></dd></div>`).join('');
   const navigation=sections.length?`<nav class="campaign-nav" aria-label="${escapeHTML(p.title)} campaigns">${sections.map((campaign,i)=>`<button type="button" data-campaign="campaign-${i}">${escapeHTML(campaign.title)} <span aria-hidden="true">↓</span></button>`).join('')}</nav>`:'';
   const campaigns=sections.map((campaign,i)=>{
     const images=renderImages(campaign.images||[],`${p.title} — ${campaign.title}`);

@@ -73,7 +73,7 @@ for n,p in enumerate(projects):
  count,films=media_counts(p)
  media=' + '.join(x for x in (f'{count} photographs' if count else '',f'{films} film{"" if films==1 else "s"}' if films else '') if x)
  paragraphs=''.join(f'<p>{esc(t).replace(chr(10),"<br>")}</p>' for t in re.split(r'\n\s*\n',p['description']) if t.strip())
- credits=''.join(f'<div><dt>{esc(c["role"])}</dt><dd>{esc(c["name"])}</dd></div>' for c in p.get('credits',[]))
+ credits=''.join(f'<div><dt>{esc(c["role"])}</dt><dd>'+(f'<a class="quiet-link" href="{esc(c["url"])}" target="_blank" rel="noopener">{esc(c["name"])}</a>' if c.get('url') else esc(c['name']))+'</dd></div>' for c in p.get('credits',[]))
  # Press features sit with the credits, as quiet links.
  credits+=''.join(f'<div><dt>Featured in</dt><dd><a class="quiet-link" href="{esc(f["url"])}" target="_blank" rel="noopener">{esc(f["name"])}</a></dd></div>' for f in p.get('press',[]))
  nav=f'<nav class="campaign-nav" aria-label="{esc(p["title"])} campaigns">'+''.join(f'<a href="#campaign-{i}">{esc(c["title"])} <span aria-hidden="true">↓</span></a>' for i,c in enumerate(sections))+'</nav>' if sections else ''

@@ -996,7 +996,7 @@
     "category": "Campaign films",
     "year": "2026",
     "location": "",
-    "description": "Campaign films for Avara. We've worked together on three campaigns so far, spanning denim and fall collections.",
+    "description": "Campaign films for Avara, the Dallas-based women’s clothing brand founded by Emily Wickard. We’ve worked together on three campaigns so far, spanning denim and fall collections.",
     "source": "Supplied by Peter Sanjur",
     "cover": {
       "id": "avara-denim-poster",
@@ -1042,7 +1042,8 @@
       },
       {
         "role": "Client",
-        "name": "Avara"
+        "name": "Avara",
+        "url": "https://shopavara.com/"
       }
     ]
   },

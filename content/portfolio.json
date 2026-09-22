@@ -2002,7 +2002,7 @@
     "category": "Fashion",
     "year": "2024",
     "location": "Dallas, TX",
-    "description": "Shot at Production House in Dallas, Roadkill is a loud, pop-infused story inspired by queer identity and the saturated chaos of 1980s Americana. Kyle Doherty led creative direction and styling around the idea of two renegades on the run, with a 1969 Thunderbird as the backdrop.\n\nWith model Lily Savage and bold makeup by Kelsey Ikler, the shoot leaned into dramatic lighting, vivid color, and a sense of cinematic rebellion.",
+    "description": "Shot at Production House in Dallas, Roadkill is a loud, pop-infused story inspired by queer identity and the saturated chaos of 1980s Americana. Kyle Doherty led creative direction and styling around the idea of two renegades on the run, with a 1969 Thunderbird as the backdrop.\n\nWith model Lily Savage and bold hair and makeup by Kelsey Ikler, the shoot leaned into dramatic lighting, vivid color, and a sense of cinematic rebellion.",
     "source": "https://www.petersanjur.com/portfolio/roadkill",
     "originalGalleryCount": 17,
     "cover": {
@@ -2126,12 +2126,16 @@
         "name": "Kyle Doherty"
       },
       {
-        "role": "Makeup",
+        "role": "Hair & makeup",
         "name": "Kelsey Ikler"
       },
       {
         "role": "Model",
         "name": "Lily Savage"
+      },
+      {
+        "role": "Studio",
+        "name": "Production House"
       }
     ]
   },

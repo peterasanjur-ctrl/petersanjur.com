@@ -6,7 +6,7 @@
     "category": "Photography",
     "year": "2026",
     "location": "",
-    "description": "",
+    "description": "Shot on the Fourth of July with model Dylan Stiggers on an active construction site. I photographed it digitally, then printed the images, rescanned them, and edited from the scans, so the paper grain and print texture become part of the picture.",
     "source": "Export folders supplied by Peter Sanjur",
     "cover": {
       "src": "assets/projects/america/cover.jpg",
@@ -57,7 +57,17 @@
         "height": 2048
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography & editing",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Dylan Stiggers"
+      }
+    ]
   },
   {
     "key": "butterflies",
@@ -66,7 +76,7 @@
     "category": "Photography",
     "year": "2026",
     "location": "",
-    "description": "",
+    "description": "A small editorial shot in February with my friend Happy. A quiet, tender set about love and care.",
     "source": "Export folders supplied by Peter Sanjur",
     "cover": {
       "src": "assets/projects/butterflies/cover.jpg",
@@ -117,7 +127,17 @@
         "height": 2560
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Happy"
+      }
+    ]
   },
   {
     "key": "julia",
@@ -126,7 +146,7 @@
     "category": "Photography",
     "year": "2026",
     "location": "",
-    "description": "",
+    "description": "Shot in June with my friend Julia. I printed one of the portraits and placed store-bought pom poms across it until they read as a puffer jacket, which became the idea for the whole set.\n\nThe rest of the series keeps playing with the print, layering textures I found at a department store over her photos.",
     "source": "Export folders supplied by Peter Sanjur",
     "cover": {
       "src": "assets/projects/julia/cover.jpg",
@@ -153,7 +173,17 @@
         "height": 2048
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography & editing",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Julia"
+      }
+    ]
   },
   {
     "key": "near-to-my-heart",
@@ -162,7 +192,7 @@
     "category": "Photography",
     "year": "2026",
     "location": "",
-    "description": "",
+    "description": "A concept about love and longing, and maybe obsession to some degree, shot with model Chastity Santiago.",
     "source": "Export folders supplied by Peter Sanjur",
     "cover": {
       "src": "assets/projects/near-to-my-heart/cover-06.jpg",
@@ -237,7 +267,17 @@
         "height": 2560
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Chastity Santiago"
+      }
+    ]
   },
   {
     "key": "in-solitude",
@@ -246,7 +286,7 @@
     "category": "Photography",
     "year": "2026",
     "location": "",
-    "description": "",
+    "description": "A companion piece to Near to My Heart, again with model Chastity Santiago. Where that set is about longing, this one sits with loneliness and a desolate feeling.",
     "source": "Export folders supplied by Peter Sanjur",
     "cover": {
       "src": "assets/projects/in-solitude/cover-03.jpg",
@@ -291,7 +331,17 @@
         "height": 2560
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Chastity Santiago"
+      }
+    ]
   },
   {
     "key": "rebirth",
@@ -300,7 +350,7 @@
     "category": "Photography",
     "year": "2026",
     "location": "",
-    "description": "",
+    "description": "Rebirth is about the feeling a mother goes through after giving birth: the postpartum period as a kind of becoming. I creative directed, photographed, and edited the concept, with a companion film that tells more of the story.\n\nIt was a collaboration with model Roxy Pryor, hair and makeup artist Max Rintoul, and stylist Ebony Brown, who made a custom dress for the concept.",
     "source": "Export folders supplied by Peter Sanjur",
     "cover": {
       "src": "assets/projects/rebirth/cover-24.jpg",
@@ -501,7 +551,29 @@
         "height": 3072
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Creative direction, photography & editing",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Roxy Pryor"
+      },
+      {
+        "role": "Hair & makeup",
+        "name": "Max Rintoul"
+      },
+      {
+        "role": "Styling & custom dress",
+        "name": "Ebony Brown"
+      },
+      {
+        "role": "Behind the scenes",
+        "name": "Simon Sanjur"
+      }
+    ]
   },
   {
     "key": "gtz-gallery",
@@ -509,8 +581,8 @@
     "client": "GTZ Gallery",
     "category": "Films",
     "year": "2026",
-    "location": "",
-    "description": "",
+    "location": "Oak Cliff, Dallas, TX",
+    "description": "A promo film for the opening of Gutierrez Gallery in Oak Cliff. The film introduces the artist, Josue Gutierrez, and the new space ahead of its opening.",
     "source": "Exports supplied by Peter Sanjur",
     "cover": {
       "src": "assets/projects/gtz-gallery/cover.jpg",
@@ -539,6 +611,16 @@
         "width": 1080,
         "height": 1920
       }
+    ],
+    "credits": [
+      {
+        "role": "Direction & filming",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Artist",
+        "name": "Josue Gutierrez"
+      }
     ]
   },
   {
@@ -546,7 +628,7 @@
     "title": "Ro$ama — My Forte",
     "client": "Ro$ama",
     "category": "Album artwork & rollout photography",
-    "description": "Album cover and rollout photography for My Forte, a new album by Dallas-based rapper Ro$ama, created in collaboration with United Nations.\n\nThe artwork was displayed on billboards in Times Square, New York, and Los Angeles.",
+    "description": "Album cover and rollout photography for My Forte, a new album by Dallas-based rapper Ro$ama, created in collaboration with United Nations.\n\nThe artwork was displayed on billboards in Times Square, New York, and Los Angeles.\n\nRo$ama was a pleasure to work with. We shot with a lot of his family, around fifteen people on set, which gave the images their warmth.",
     "credits": [
       {
         "role": "Photography",
@@ -558,7 +640,7 @@
       },
       {
         "role": "Lighting",
-        "name": "Zeta"
+        "name": "Natalie Zeta"
       },
       {
         "role": "Lighting & behind the scenes",
@@ -705,7 +787,7 @@
     "category": "Jewelry campaign films",
     "year": "2026",
     "location": "",
-    "description": "A collection of campaign films for jewelry company Susan Shaw, from pre-spring through fall.",
+    "description": "A collection of campaign films for jewelry company Susan Shaw, from pre-spring through fall. We've worked together across several seasons, and their creative direction makes every one a pleasure to shoot.",
     "cover": {
       "src": "assets/projects/susan-shaw/al-fresco-cover.jpg",
       "width": 2880,
@@ -900,7 +982,7 @@
     "category": "Campaign films",
     "year": "2026",
     "location": "",
-    "description": "Campaign films for Avara, spanning denim and fall collections.",
+    "description": "Campaign films for Avara. We've worked together on three campaigns so far, spanning denim and fall collections.",
     "source": "Supplied by Peter Sanjur",
     "cover": {
       "id": "avara-denim-poster",
@@ -946,8 +1028,8 @@
     "client": "Brick",
     "category": "Product & lifestyle photography",
     "year": "2026",
-    "location": "",
-    "description": "Product and lifestyle photography for Brick, from everyday moments at home and at work to time on the climbing wall.",
+    "location": "Dallas, TX",
+    "description": "Product and lifestyle photography for Brick, a device that helps you refocus by blocking distracting apps like social media. I was brought on by Simon Kim and the Creator Camp team, and we shot at my studio in downtown Dallas, from everyday moments at home and at work to time on the climbing wall.",
     "source": "Supplied by Peter Sanjur",
     "cover": {
       "id": "brick-07",
@@ -1011,7 +1093,21 @@
         "src": "assets/projects/brick/09.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Brought on by",
+        "name": "Simon Kim, Creator Camp"
+      },
+      {
+        "role": "Models",
+        "name": "Caroline Reese, Xavier Mendoza, Ellen Yang"
+      }
+    ]
   },
   {
     "key": "moonrocks",
@@ -2040,7 +2136,7 @@
     "category": "Editorial",
     "year": "2024",
     "location": "Dallas, TX",
-    "description": "",
+    "description": "An editorial test shoot with my friend Breanna Espina in Dallas.",
     "source": "https://www.petersanjur.com/portfolio/breannaespina",
     "originalGalleryCount": 14,
     "cover": {
@@ -2135,7 +2231,17 @@
         "src": "assets/projects/breannaespina/14.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Breanna Espina"
+      }
+    ]
   },
   {
     "key": "grunge-girl",
@@ -2144,7 +2250,7 @@
     "category": "Portfolio Work",
     "year": "2023",
     "location": "Dallas, TX",
-    "description": "",
+    "description": "A test shoot in Dallas with my friend Peyton Moore.",
     "source": "https://www.petersanjur.com/portfolio/grunge-girl",
     "originalGalleryCount": 5,
     "cover": {
@@ -2185,7 +2291,17 @@
         "src": "assets/projects/grunge-girl/05.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Peyton Moore"
+      }
+    ]
   },
   {
     "key": "audrey-given",
@@ -2250,7 +2366,7 @@
     "category": "Portfolio Work",
     "year": "2025",
     "location": "Dallas, TX",
-    "description": "",
+    "description": "A portfolio shoot in Dallas with model Roxy Pryor.",
     "source": "https://www.petersanjur.com/portfolio/sunset-vistas",
     "originalGalleryCount": 7,
     "cover": {
@@ -2303,7 +2419,17 @@
         "src": "assets/projects/sunset-vistas/07.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Model",
+        "name": "Roxy Pryor"
+      }
+    ]
   },
   {
     "key": "chevy-girl",

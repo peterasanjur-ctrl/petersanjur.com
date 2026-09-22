@@ -205,7 +205,11 @@ function startIntro(manual=false){
   name.textContent=target.textContent.trim();
   let caret=opening.querySelector('.opening-caret');
   if(!caret){caret=document.createElement('span');caret.className='opening-caret';caret.setAttribute('aria-hidden','true');name.after(caret);}
-  Object.assign(name.style,{left:`${rect.left}px`,top:`${rect.top}px`,width:`${rect.width}px`,fontSize:type.fontSize,lineHeight:type.lineHeight,letterSpacing:type.letterSpacing});
+  // In a short window the real title can sit below the fold, so type it where
+  // it can be seen and let it settle into place as the curtain lifts.
+  const top=Math.min(rect.top,Math.max(16,window.innerHeight-rect.height-Math.max(24,window.innerHeight*.1)));
+  const settle=rect.top-top;
+  Object.assign(name.style,{left:`${rect.left}px`,top:`${top}px`,width:`${rect.width}px`,fontSize:type.fontSize,lineHeight:type.lineHeight,letterSpacing:type.letterSpacing});
   opening.hidden=false;
   document.documentElement.classList.add('intro-running');
   try{
@@ -226,6 +230,7 @@ function startIntro(manual=false){
   Object.assign(caret.style,{left:`${box.left}px`,top:`${box.top+box.height*.08}px`,height:`${box.height*.84}px`,width:`${Math.max(4,box.height*.07)}px`});
   animate(caret,step(stops.map(stop=>({transform:`translateX(${stop+box.height*.05}px)`}))),{duration:typing,delay:typeStart});
   animate(caret,[{opacity:1},{opacity:0}],{duration:150,delay:reveal-150});
+  if(settle>0)animate(name,[{translate:'0 0'},{translate:`0 ${settle}px`}],{duration:900,delay:reveal,easing:'cubic-bezier(.65,0,.2,1)',composite:'add'});
   animate(opening.querySelector('.opening-veil'),[{opacity:1},{opacity:0}],{duration:1,delay:reveal});
   opening.querySelectorAll('.opening-panels>span').forEach((panel,i)=>animate(panel,[
     {transform:'translateY(0)'},{transform:'translateY(-101%)'}

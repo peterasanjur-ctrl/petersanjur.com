@@ -107,7 +107,7 @@ if(booking){
       const response=await fetch(booking.action,{method:'POST',body:new URLSearchParams(new FormData(booking)),headers:{Accept:'application/json'}});
       const result=await response.json();
       if(!response.ok||result.ok===false)throw new Error(result.error||'Something went wrong.');
-      booking.classList.add('is-sent');const sent=booking.querySelector('#booking-sent');sent.hidden=false;sent.focus();
+      window.goatcounter?.count?.({path:'studio-booking-request',title:'Studio booking request',event:true});booking.classList.add('is-sent');const sent=booking.querySelector('#booking-sent');sent.hidden=false;sent.focus();
     }catch(error){
       status.textContent=`${error.message} You can also email info@petersanjur.com.`;status.classList.add('is-error');
       button.disabled=false;button.textContent='Request to book';

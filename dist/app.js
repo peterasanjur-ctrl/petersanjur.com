@@ -157,6 +157,7 @@ form.addEventListener('submit',async event=>{
     const response=await fetch(endpoint,{method:'POST',body:new URLSearchParams(data),headers:{Accept:'application/json'}});
     const result=await response.json().catch(()=>({}));
     if(!response.ok||result.ok===false)throw new Error(result.error||`Inquiry failed: ${response.status}`);
+    window.goatcounter?.count?.({path:'contact-inquiry',title:'Contact inquiry',event:true});
     form.reset();
     document.querySelector('#inquiry-sent-note').textContent=`I’ll reply to ${email}.`;
     form.classList.add('is-sent');

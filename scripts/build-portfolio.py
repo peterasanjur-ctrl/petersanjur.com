@@ -106,6 +106,8 @@ for n,p in enumerate(projects):
   <link rel="stylesheet" href="{up}styles.css">
   <link rel="stylesheet" href="{up}palette.css">
   <script type="application/ld+json">{json.dumps(data,ensure_ascii=False)}</script>
+  <!-- Visitor stats: peterasanjur.goatcounter.com -->
+  <script data-goatcounter="https://peterasanjur.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body class="project-page">
   <a class="skip-link" href="#main">Skip to content</a>

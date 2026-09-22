@@ -204,19 +204,50 @@
   </section>
 
   <section class="studio-inquiry" id="studio-inquiry" aria-labelledby="inquiry-title">
-    <div>
+    <div class="inquiry-intro">
       <h2 id="inquiry-title">Let’s make room.</h2>
+      <p>Pick a date and your hours. I’ll check the calendar and confirm by email, usually the same day.</p>
       <a class="avatar-chip" href="mailto:info@petersanjur.com?subject=Studio%20inquiry"><img src="assets/studio/peter-avatar.jpg" alt="" width="32" height="32">info@petersanjur.com</a>
+      <p class="mono inquiry-address">1409 Botham Jean Blvd, Dallas, Texas<br>[ 2 hour minimum ]</p>
     </div>
-    <div class="inquiry-side">
+    <!-- Booking requests post to the same Google Apps Script as the contact form (integrations/inquiries.gs). -->
+    <form class="booking-form" id="booking-form" method="POST" action="https://script.google.com/macros/s/AKfycbynmIhW2RbTY1wXJBKGrqr-Jz8rYaO_5B95Rv9i9ZHZ8xWXTMmYN7V5kjP_E7vVf8rV/exec">
+      <input type="hidden" name="form_kind" value="studio">
       <p class="mono">[ Book the loft ]</p>
-      <p>A date. An idea. Your crew.<br>Tell me what you have in mind.</p>
-      <div class="studio-chips">
-        <a href="index.html?inquiry=studio#contact">Inquire about the studio ↗︎</a>
-        <a href="mailto:info@petersanjur.com?subject=Studio%20inquiry">Email ↗︎</a>
+      <div class="booking-when">
+        <label class="booking-date">Date *<input name="booking_date" type="date" required></label>
+        <label>Start *<select name="start_time" required></select></label>
+        <label>End *<select name="end_time" required></select></label>
       </div>
-      <p class="mono inquiry-address">1409 Botham Jean Blvd, Dallas, Texas</p>
-    </div>
+      <p class="booking-hours mono" id="booking-hours" aria-live="polite"></p>
+      <div class="booking-row">
+        <label>Name *<input name="name" autocomplete="name" required maxlength="100"></label>
+        <label>Email *<input name="email" type="email" autocomplete="email" required maxlength="160"></label>
+      </div>
+      <div class="booking-row">
+        <label>Phone<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+        <label>Company / brand<input name="company" autocomplete="organization" maxlength="120"></label>
+      </div>
+      <div class="booking-row">
+        <label>What are you making? *<select name="activity" required><option value="">Choose one</option><option>Photo shoot</option><option>Video / film</option><option>Content creation</option><option>Event</option><option>Something else</option></select></label>
+        <label>Headcount *<select name="crew" required><option value="">Including talent</option><option value="1–5">1–5 people</option><option value="6–15">6–15 people</option><option value="16–30">16–30 people</option><option value="30+">30+ people</option></select></label>
+      </div>
+      <fieldset class="booking-gear"><legend>Gear on request</legend>
+        <label><input type="checkbox" name="gear" value="Lenses"><span>Lenses</span></label>
+        <label><input type="checkbox" name="gear" value="Continuous lighting &amp; strobes"><span>Lighting &amp; strobes</span></label>
+        <label><input type="checkbox" name="gear" value="Generators &amp; V-mount batteries"><span>Power</span></label>
+        <label><input type="checkbox" name="gear" value="DJI Ronin RS4"><span>Ronin RS4</span></label>
+        <label><input type="checkbox" name="gear" value="Wireless audio"><span>Wireless audio</span></label>
+        <label><input type="checkbox" name="gear" value="Haze &amp; smoke"><span>Haze</span></label>
+      </fieldset>
+      <label>About the shoot<textarea name="message" rows="3" maxlength="2000" placeholder="The concept, setup, anything you’re bringing in…"></textarea></label>
+      <label class="form-trap" aria-hidden="true">Leave this empty<input name="_gotcha" tabindex="-1" autocomplete="off"></label>
+      <div class="booking-bottom">
+        <p id="booking-status" role="status">Requests aren’t final until I confirm.</p>
+        <button type="submit">Request to book</button>
+      </div>
+      <div class="booking-sent" id="booking-sent" tabindex="-1" hidden><p class="mono">[ Request sent ]</p><h3>Thanks. Your request is in.</h3><p id="booking-sent-note">A copy is in your inbox. I’ll confirm by email.</p></div>
+    </form>
   </section>
 </main>
 

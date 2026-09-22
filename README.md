@@ -104,3 +104,13 @@ GitHub Pages hosts the site; the petersanjur.com registration and DNS stay at Wi
 Every project has its own crawlable page. The 14 projects imported from Wix keep their old `/portfolio/<slug>` addresses, so existing search results still land; newer projects use their content key as the slug. On the homepage, a plain click still opens the project in place (`#project/<key>`), while modified clicks and crawlers follow the real page. The old Wix booking addresses (`/book-online`, `/booking`, `/booking-1`) redirect to the studio page.
 
 Search details: `dist/robots.txt` points to the sitemap; every page has a canonical URL and description; the homepage carries Person and WebSite structured data, the studio page carries LocalBusiness data (no postal code or hours are claimed), and each project page carries CreativeWork data. The studio share image is `dist/assets/share/studio.jpg`.
+
+### Studio bookings
+
+The form at the bottom of `studio.html` posts to the same Apps Script with `form_kind=studio`. Each request:
+
+- adds a "Studio inquiry" row to Notion with the date and hours as a time range, plus phone, activity, headcount, gear, and notes
+- emails Peter the details with a **Review & approve** link (replying to that email goes straight to the client)
+- emails the client a receipt (their replies come back to info@petersanjur.com)
+
+The review link opens a page that flags any calendar overlap. **Approve & add to calendar** creates the event on Peter's default Google Calendar, invites the client, and emails them a confirmation. Approval is a button rather than a link, so email link scanners can't approve by accident, and review links are signed with a key stored in the script's `SIGNING_KEY` property. The calendar needs one-time permission: run `checkSetup` in the Apps Script editor after updating the code.

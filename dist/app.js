@@ -117,7 +117,8 @@ const inquiryStatus=document.querySelector('#inquiry-status');
 const inquirySent=document.querySelector('#inquiry-sent');
 const sendButton=form.querySelector('[type="submit"]');
 const sendLabel=sendButton.firstChild;
-if(new URLSearchParams(location.search).get('inquiry')==='studio'){form.elements.type.value='Studio inquiry';form.elements.message.placeholder='Preferred date, duration, crew size, and any equipment you need…';}
+// Studio bookings have their own form on the studio page.
+if(new URLSearchParams(location.search).get('inquiry')==='studio')location.replace('studio.html#studio-inquiry');
 // The date picker starts at today, opens from anywhere in the field, and stays optional.
 const dateField=form.elements.preferred_date;
 const today=new Date();

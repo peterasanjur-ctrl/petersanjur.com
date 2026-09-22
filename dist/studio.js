@@ -72,3 +72,42 @@ function closePhoto(){viewer.close();document.body.classList.remove('photo-open'
 viewer.querySelector('.photo-close').addEventListener('click',closePhoto);
 viewer.addEventListener('cancel',event=>{event.preventDefault();closePhoto();});
 applyMotion();
+
+// Booking request: half-hour slots, a live hours count, and a 2 hour minimum.
+const booking=document.querySelector('#booking-form');
+if(booking){
+  const {booking_date:day,start_time:start,end_time:end}=booking.elements;
+  const hoursNote=booking.querySelector('#booking-hours');
+  const status=booking.querySelector('#booking-status');
+  const label=m=>`${(Math.floor(m/60)+11)%12+1}:${String(m%60).padStart(2,'0')} ${m<720?'AM':'PM'}`;
+  const value=m=>`${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;
+  for(let m=7*60;m<=23*60;m+=30){start.add(new Option(label(m),value(m)));end.add(new Option(label(m),value(m)));}
+  start.value='10:00';end.value='14:00';
+  const minutes=t=>{const [h,m]=t.split(':').map(Number);return h*60+m;};
+  const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
+  day.min=today.toISOString().slice(0,10);
+  day.addEventListener('click',()=>{try{day.showPicker();}catch{}});
+  function syncHours(){
+    if(minutes(end.value)<=minutes(start.value)){const next=[...end.options].find(o=>minutes(o.value)>=minutes(start.value)+120);if(next)end.value=next.value;}
+    const hours=(minutes(end.value)-minutes(start.value))/60;
+    hoursNote.textContent=hours<2?`${hours} hr — 2 hour minimum`:`${hours} hours`;
+    hoursNote.classList.toggle('is-short',hours<2);
+    return hours;
+  }
+  start.addEventListener('change',syncHours);end.addEventListener('change',syncHours);syncHours();
+  booking.addEventListener('submit',async event=>{
+    event.preventDefault();
+    if(syncHours()<2){status.textContent='Bookings are 2 hours minimum.';status.classList.add('is-error');end.focus();return;}
+    const button=booking.querySelector('button[type=submit]');
+    button.disabled=true;button.textContent='Sending…';status.classList.remove('is-error');status.textContent='Sending your request…';
+    try{
+      const response=await fetch(booking.action,{method:'POST',body:new URLSearchParams(new FormData(booking)),headers:{Accept:'application/json'}});
+      const result=await response.json();
+      if(!response.ok||result.ok===false)throw new Error(result.error||'Something went wrong.');
+      booking.classList.add('is-sent');const sent=booking.querySelector('#booking-sent');sent.hidden=false;sent.focus();
+    }catch(error){
+      status.textContent=`${error.message} You can also email info@petersanjur.com.`;status.classList.add('is-error');
+      button.disabled=false;button.textContent='Request to book';
+    }
+  });
+}

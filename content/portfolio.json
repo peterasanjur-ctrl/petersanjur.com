@@ -1398,7 +1398,7 @@
     "category": "Portfolio Work",
     "year": "2024",
     "location": "Dallas, TX",
-    "description": "DreamState is a personal body of work created in early 2024, featuring models Mawntel and Gillian. Shot across multiple locations in Dallas — both outdoors and in-studio — the series explores vibrant color, stylized fashion, and the surreal clarity of spring. We styled three distinct looks that flowed between fantasy and grounded beauty, brought to life with the help of our friend Gabby on wardrobe.\n\nThe concept was co-developed with Gillian, and it quickly became one of my favorite projects to date. Every frame felt intentional, fresh, and creatively charged — the kind of shoot that reminds you why you do this in the first place.\n\nCredits:\nPhotography, Lighting, Editing – Peter Sanjur\nModels – Mawntel & Gillian\nStyling – Gabby\nCreative Direction – Peter Sanjur & Gillian\nLocation – Dallas, TX",
+    "description": "Dream State is a personal body of work created in early 2024 with models Mawntel and Gillian. Shot across Dallas, outdoors and in the studio, the series explores vibrant color, stylized fashion, and the surreal clarity of spring. We built three distinct looks that move between fantasy and grounded beauty, with our friend Gabby on wardrobe.\n\nI developed the concept together with Gillian, and it quickly became one of my favorite projects. Every frame felt intentional, fresh, and creatively charged, the kind of shoot that reminds you why you do this in the first place.",
     "source": "https://www.petersanjur.com/portfolio/dream-state-series",
     "originalGalleryCount": 15,
     "cover": {
@@ -1499,7 +1499,25 @@
         "src": "assets/projects/dream-state-series/15.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography, lighting & editing",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Creative direction",
+        "name": "Peter Sanjur & Gillian"
+      },
+      {
+        "role": "Models",
+        "name": "Mawntel & Gillian"
+      },
+      {
+        "role": "Styling",
+        "name": "Gabby"
+      }
+    ]
   },
   {
     "key": "hashirastudios-burnitall",

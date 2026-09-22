@@ -90,7 +90,7 @@ if(booking){
   function syncHours(){
     if(minutes(end.value)<=minutes(start.value)){const next=[...end.options].find(o=>minutes(o.value)>=minutes(start.value)+120);if(next)end.value=next.value;}
     const hours=(minutes(end.value)-minutes(start.value))/60;
-    hoursNote.textContent=hours<2?`${hours} hr — 2 hour minimum`:`${hours} hours`;
+    hoursNote.textContent=hours<2?`${hours} hr — 2 hour minimum`:`${hours} hours × $125 = $${(hours*125).toLocaleString('en-US',{minimumFractionDigits:hours%1?2:0})}`;
     hoursNote.classList.toggle('is-short',hours<2);
     return hours;
   }

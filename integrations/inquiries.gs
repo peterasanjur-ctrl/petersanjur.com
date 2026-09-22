@@ -141,6 +141,7 @@ function reply(data) {
 const STUDIO_TIME_ZONE = 'America/Chicago';
 const STUDIO_ADDRESS = '1409 Botham Jean Blvd, Dallas, Texas';
 const STUDIO_MIN_HOURS = 2;
+const STUDIO_RATE = 125; // dollars per hour
 const STUDIO_ACTIVITIES = ['Photo shoot', 'Video / film', 'Content creation', 'Event', 'Something else'];
 const STUDIO_CREW = ['1\u20135', '6\u201315', '16\u201330', '30+'];
 const STUDIO_GEAR = ['Lenses', 'Continuous lighting & strobes', 'Generators & V-mount batteries', 'DJI Ronin RS4', 'Wireless audio', 'Haze & smoke'];
@@ -307,9 +308,14 @@ function bookingWhen(booking) {
   return day + ', ' + time(booking.start) + '\u2013' + time(booking.end) + ' (' + booking.hours + ' hrs)';
 }
 
+function bookingEstimate(booking) {
+  return '$' + (booking.hours * STUDIO_RATE).toLocaleString('en-US', { minimumFractionDigits: booking.hours % 1 ? 2 : 0 }) + ' (' + booking.hours + ' hrs \u00d7 $' + STUDIO_RATE + '/hr)';
+}
+
 function bookingRows(booking) {
   return [
     ['When', bookingWhen(booking)],
+    ['Estimate', bookingEstimate(booking)],
     ['Name', booking.name],
     ['Email', booking.email],
     ['Phone', booking.phone],

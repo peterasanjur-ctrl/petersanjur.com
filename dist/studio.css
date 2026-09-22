@@ -39,7 +39,7 @@ h2{font-size:clamp(52px,7vw,124px)}
 .site-header.is-solid{background:#080808;border-bottom:1px solid #333}
 .site-header a{pointer-events:auto}
 .wordmark{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.08em;line-height:1}
-.site-header nav{display:flex;gap:22px;font-size:15px;font-weight:600;text-transform:uppercase}
+.site-header nav{display:flex;align-items:center;gap:22px;font-size:15px;font-weight:600;text-transform:uppercase}
 .site-header nav a{position:relative}
 .site-header nav a::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s}
 .site-header nav a:hover::after,.site-header nav a:focus-visible::after,.site-header nav a[aria-current]::after{transform:scaleX(1);transform-origin:left}
@@ -202,3 +202,6 @@ dialog p{font-family:var(--mono);font-size:10px;text-transform:uppercase;text-al
   .studio-footer{flex-wrap:wrap}
 }
 @media(max-width:390px){.site-header nav{font-size:11px;gap:10px}}
+/* Contact: viewfinder corner brackets that snap in on hover, like focus locking. */
+.site-header nav .inquire-link{padding:0 2px;margin:0 8px 0 4px}.site-header nav .inquire-link::after{display:none}.site-header nav .inquire-link::before{content:'';position:absolute;inset:-6px -8px;--c:currentColor;background:linear-gradient(var(--c),var(--c)) top left/7px 1.5px,linear-gradient(var(--c),var(--c)) top left/1.5px 7px,linear-gradient(var(--c),var(--c)) top right/7px 1.5px,linear-gradient(var(--c),var(--c)) top right/1.5px 7px,linear-gradient(var(--c),var(--c)) bottom left/7px 1.5px,linear-gradient(var(--c),var(--c)) bottom left/1.5px 7px,linear-gradient(var(--c),var(--c)) bottom right/7px 1.5px,linear-gradient(var(--c),var(--c)) bottom right/1.5px 7px;background-repeat:no-repeat;transition:inset .25s cubic-bezier(.2,.9,.3,1.4);pointer-events:none}.site-header nav .inquire-link:hover::before,.site-header nav .inquire-link:focus-visible::before{inset:-3px -5px}
+@media(max-width:760px){.site-header nav .inquire-link{margin:0 6px 0 2px}.site-header nav .inquire-link::before{inset:-5px -6px}}

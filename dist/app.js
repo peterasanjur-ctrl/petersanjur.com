@@ -185,6 +185,7 @@ function finishIntro(){
   clearTimeout(introTimer);
   const hadFocus=opening.contains(document.activeElement);
   opening.hidden=true;
+  opening.style.height='';
   document.documentElement.classList.remove('intro-running');
   introAnimations.forEach(animation=>animation.cancel());
   introAnimations=[];
@@ -195,23 +196,27 @@ function startIntro(manual=false){
   if(!motionEnabled)return;
   finishIntro();
   window.scrollTo({top:0,behavior:'instant'});
-  // Measure the real title, so the duplicate lands in precisely the same place.
   const target=document.querySelector('#hero-title');
-  const rect=target.getBoundingClientRect();
-  const type=getComputedStyle(target);
   const name=opening.querySelector('.opening-name');
   // Rebuild the name as one run of text with its caret, so an older cached copy
   // of the page markup can't break the intro.
   name.textContent=target.textContent.trim();
   let caret=opening.querySelector('.opening-caret');
   if(!caret){caret=document.createElement('span');caret.className='opening-caret';caret.setAttribute('aria-hidden','true');name.after(caret);}
-  // In a short window the real title can sit below the fold, so type it where
-  // it can be seen and let it settle into place as the curtain lifts.
-  const top=Math.min(rect.top,Math.max(16,window.innerHeight-rect.height-Math.max(24,window.innerHeight*.1)));
-  const settle=rect.top-top;
-  Object.assign(name.style,{left:`${rect.left}px`,top:`${top}px`,width:`${rect.width}px`,fontSize:type.fontSize,lineHeight:type.lineHeight,letterSpacing:type.letterSpacing});
+  // The overlay sits on the page (not the phone's shifting viewport) over the hero,
+  // so the typed name and the real title share one coordinate system.
+  opening.style.height=`${Math.max(document.querySelector('.hero').offsetHeight,window.innerHeight)}px`;
   opening.hidden=false;
   document.documentElement.classList.add('intro-running');
+  // Measure the real title, so the duplicate lands in precisely the same place.
+  const frame=opening.getBoundingClientRect();
+  const rect=target.getBoundingClientRect();
+  const type=getComputedStyle(target);
+  // In a short window the real title can sit below the fold, so type it where
+  // it can be seen and let it settle into place as the curtain lifts.
+  const visibleTop=Math.min(rect.top,Math.max(16,window.innerHeight-rect.height-64));
+  const settle=rect.top-visibleTop;
+  Object.assign(name.style,{left:`${rect.left-frame.left}px`,top:`${visibleTop-frame.top}px`,width:`${rect.width}px`,fontSize:type.fontSize,lineHeight:type.lineHeight,letterSpacing:type.letterSpacing});
   try{
   const animate=(element,frames,options)=>{
     const animation=element.animate(frames,{fill:'both',...options});
@@ -227,10 +232,10 @@ function startIntro(manual=false){
   const perLetter=85,typing=perLetter*(stops.length-1),typeStart=250,reveal=typeStart+typing+550;
   const step=values=>values.map((value,i)=>({...value,offset:i/(values.length-1),easing:'steps(1,end)'}));
   animate(name,step(stops.map(stop=>({clipPath:`inset(-30% ${box.width-stop}px -30% -5%)`}))),{duration:typing,delay:typeStart});
-  Object.assign(caret.style,{left:`${box.left}px`,top:`${box.top+box.height*.08}px`,height:`${box.height*.84}px`,width:`${Math.max(4,box.height*.07)}px`});
+  Object.assign(caret.style,{left:`${box.left-frame.left}px`,top:`${box.top-frame.top+box.height*.08}px`,height:`${box.height*.84}px`,width:`${Math.max(4,box.height*.07)}px`});
   animate(caret,step(stops.map(stop=>({transform:`translateX(${stop+box.height*.05}px)`}))),{duration:typing,delay:typeStart});
   animate(caret,[{opacity:1},{opacity:0}],{duration:150,delay:reveal-150});
-  if(settle>0)animate(name,[{translate:'0 0'},{translate:`0 ${settle}px`}],{duration:900,delay:reveal,easing:'cubic-bezier(.65,0,.2,1)',composite:'add'});
+  if(settle>0)animate(name,[{translate:'0 0'},{translate:`0 ${settle}px`}],{duration:900,delay:reveal,easing:'cubic-bezier(.65,0,.2,1)'});
   animate(opening.querySelector('.opening-veil'),[{opacity:1},{opacity:0}],{duration:1,delay:reveal});
   opening.querySelectorAll('.opening-panels>span').forEach((panel,i)=>animate(panel,[
     {transform:'translateY(0)'},{transform:'translateY(-101%)'}

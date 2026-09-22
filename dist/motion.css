@@ -27,3 +27,6 @@
 @keyframes soft-clarity{from{filter:blur(4px);opacity:.65}to{filter:blur(0);opacity:1}}
 .motion-off .soft-reveal,.studio-motion-off .soft-reveal,.soft-reveal:focus-within{animation:none;translate:none;filter:none;opacity:1}
 @media(prefers-reduced-motion:reduce){.opening{display:none}.soft-reveal{animation:none;translate:none;filter:none;opacity:1}}
+/* The intro overlay is anchored to the page rather than the viewport, so phone toolbars can't shift the typed name off the real title. */
+.opening{position:absolute;inset:0 0 auto;min-height:100svh}
+.skip-intro{position:fixed}

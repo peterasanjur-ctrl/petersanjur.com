@@ -554,7 +554,7 @@
     "films": [],
     "credits": [
       {
-        "role": "Creative direction, photography & editing",
+        "role": "Creative direction, photography, film & editing",
         "name": "Peter Sanjur"
       },
       {
@@ -616,6 +616,10 @@
       {
         "role": "Direction & filming",
         "name": "Peter Sanjur"
+      },
+      {
+        "role": "Client",
+        "name": "Gutierrez Gallery"
       },
       {
         "role": "Artist",
@@ -973,7 +977,17 @@
         ]
       }
     ],
-    "client_url": "https://susanshaw.com/"
+    "client_url": "https://susanshaw.com/",
+    "credits": [
+      {
+        "role": "Campaign films",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Client & creative direction",
+        "name": "Susan Shaw"
+      }
+    ]
   },
   {
     "key": "avara",
@@ -1020,7 +1034,17 @@
         "images": []
       }
     ],
-    "client_url": "https://shopavara.com/"
+    "client_url": "https://shopavara.com/",
+    "credits": [
+      {
+        "role": "Campaign films",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Client",
+        "name": "Avara"
+      }
+    ]
   },
   {
     "key": "brick",

@@ -109,7 +109,7 @@ Search details: `dist/robots.txt` points to the sitemap; every page has a canoni
 
 The form at the bottom of `studio.html` posts to the same Apps Script with `form_kind=studio`. Each request:
 
-- adds a "Studio inquiry" row to Notion with the date and hours as a time range, plus phone, activity, headcount, gear, and notes
+- adds a row to the **Studio Bookings** table in Notion (on the Creator Quest page, separate from Client Submissions) with Status "Requested", the date and hours as a time range, the $125/hr estimate, phone, company, activity, headcount, gear, and notes. Approving sets Status to "Booked". The "petersanjur.com inquiries" Notion connection needs access to this table.
 - emails Peter the details with a **Review & approve** link (replying to that email goes straight to the client)
 - emails the client a receipt (their replies come back to info@petersanjur.com)
 

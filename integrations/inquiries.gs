@@ -138,6 +138,7 @@ function reply(data) {
 
 /* ---------- Studio bookings ---------- */
 
+const STUDIO_DATABASE_ID = 'e04b2d26da204b77a69ae6d6e56bd7f2'; // Studio Bookings, next to Client Submissions
 const STUDIO_TIME_ZONE = 'America/Chicago';
 const STUDIO_ADDRESS = '1409 Botham Jean Blvd, Dallas, Texas';
 const STUDIO_MIN_HOURS = 2;
@@ -178,29 +179,39 @@ function studioRequest(form, gear) {
 }
 
 function addBookingToNotion(booking) {
-  const settings = PropertiesService.getScriptProperties();
-  const token = settings.getProperty('NOTION_TOKEN');
-  if (!token) throw new Error('NOTION_TOKEN script property is missing.');
   const properties = {
     'Name': { title: [{ text: { content: booking.name } }] },
+    'Status': { select: { name: 'Requested' } },
+    'Date': { date: { start: booking.date + 'T' + booking.start + ':00', end: booking.date + 'T' + booking.end + ':00', time_zone: STUDIO_TIME_ZONE } },
+    'Hours': { number: booking.hours },
+    'Estimate': { number: booking.hours * STUDIO_RATE },
     'Email': { email: booking.email },
-    'Project Type': { select: { name: 'Studio inquiry' } },
-    'Project Description': { rich_text: [{ text: { content: bookingLines(booking).join('\n').slice(0, 2000) } }] },
-    'Project Date': { date: { start: booking.date + 'T' + booking.start + ':00', end: booking.date + 'T' + booking.end + ':00', time_zone: STUDIO_TIME_ZONE } },
-    'Customer Journey': { select: { name: 'New Submission' } },
-    'Source': { select: { name: 'Website' } }
+    'Activity': { select: { name: booking.activity } },
+    'Gear': { multi_select: booking.gear.map(function (item) { return { name: item }; }) }
   };
-  if (booking.phone) properties['Phone #'] = { phone_number: booking.phone };
-  const response = UrlFetchApp.fetch('https://api.notion.com/v1/pages', {
-    method: 'post',
+  if (booking.phone) properties['Phone'] = { phone_number: booking.phone };
+  if (booking.company) properties['Company'] = { rich_text: [{ text: { content: booking.company } }] };
+  if (booking.crew) properties['Headcount'] = { select: { name: booking.crew } };
+  if (booking.message) properties['Notes'] = { rich_text: [{ text: { content: booking.message } }] };
+  const database = PropertiesService.getScriptProperties().getProperty('STUDIO_DATABASE_ID') || STUDIO_DATABASE_ID;
+  const page = notionRequest('post', 'pages', { parent: { database_id: database }, properties: properties });
+  booking.notionId = page.id;
+  return page.url || '';
+}
+
+function notionRequest(method, path, payload) {
+  const token = PropertiesService.getScriptProperties().getProperty('NOTION_TOKEN');
+  if (!token) throw new Error('NOTION_TOKEN script property is missing.');
+  const response = UrlFetchApp.fetch('https://api.notion.com/v1/' + path, {
+    method: method,
     contentType: 'application/json',
     headers: { Authorization: 'Bearer ' + token, 'Notion-Version': '2022-06-28' },
-    payload: JSON.stringify({ parent: { database_id: settings.getProperty('NOTION_DATABASE_ID') || DEFAULT_DATABASE_ID }, properties: properties }),
+    payload: JSON.stringify(payload),
     muteHttpExceptions: true
   });
   const body = JSON.parse(response.getContentText() || '{}');
   if (response.getResponseCode() >= 300) throw new Error(body.message || ('HTTP ' + response.getResponseCode()));
-  return body.url || '';
+  return body;
 }
 
 function emailBookingToPeter(booking, problems) {
@@ -268,6 +279,9 @@ function approveBooking(form) {
     booking.approved = new Date().toISOString();
     booking.eventId = event.getId();
     PropertiesService.getScriptProperties().setProperty('booking_' + booking.id, JSON.stringify(booking));
+    if (booking.notionId) {
+      try { notionRequest('patch', 'pages/' + booking.notionId, { properties: { 'Status': { select: { name: 'Booked' } } } }); } catch (error) { console.error('Notion status: ' + error.message); }
+    }
     const to = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL') || DEFAULT_NOTIFY_EMAIL;
     MailApp.sendEmail({
       to: booking.email,

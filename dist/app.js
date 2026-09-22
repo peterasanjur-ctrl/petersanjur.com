@@ -118,16 +118,30 @@ const inquirySent=document.querySelector('#inquiry-sent');
 const sendButton=form.querySelector('[type="submit"]');
 const sendLabel=sendButton.firstChild;
 if(new URLSearchParams(location.search).get('inquiry')==='studio'){form.elements.type.value='Studio inquiry';form.elements.message.placeholder='Preferred date, duration, crew size, and any equipment you need…';}
-// Inquiries post to the form service in the form's action attribute (see index.html).
+// The date picker starts at today, opens from anywhere in the field, and stays optional.
+const dateField=form.elements.preferred_date;
+const today=new Date();
+dateField.min=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+dateField.addEventListener('click',()=>{try{dateField.showPicker();}catch{/* Older browsers open their own picker. */}});
+['input','change'].forEach(type=>dateField.addEventListener(type,()=>dateField.toggleAttribute('data-empty',!dateField.value)));
+// Show the chosen date the way people read it, e.g. "Sat, Mar 14, 2027".
+function readableDate(value){
+  if(!value)return '';
+  const [year,month,day]=value.split('-').map(Number);
+  return new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).format(new Date(year,month-1,day));
+}
+// Inquiries post to the web app in the form's action attribute (integrations/inquiries.gs).
 form.addEventListener('submit',async event=>{
   event.preventDefault();
   const data=new FormData(form);
   const name=data.get('name').trim(),email=data.get('email').trim();
-  const subject=`Project inquiry — ${data.get('type')} — ${name}`;
+  const when=readableDate(data.get('preferred_date'));
+  // The date leads the subject's tail so inquiries are easy to scan and sort by date.
+  const subject=`Project inquiry — ${data.get('type')} — ${name}${when?` — ${when}`:''}`;
   const endpoint=form.getAttribute('action');
   if(!endpoint){
     // No form service connected yet: fall back to the visitor's email app.
-    const body=`Name: ${name}\nEmail: ${email}\nProject: ${data.get('type')}\nTiming: ${data.get('timing').trim()||'Flexible / to discuss'}\n\n${data.get('message').trim()}`;
+    const body=`Name: ${name}\nEmail: ${email}\nProject: ${data.get('type')}\nPreferred date: ${when||'Flexible / to discuss'}\nBudget: ${data.get('budget')||'Not given'}\n\n${data.get('message').trim()}`;
     location.href=`mailto:info@petersanjur.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     return;
   }
@@ -138,8 +152,10 @@ form.addEventListener('submit',async event=>{
   inquiryStatus.classList.remove('is-error');
   inquiryStatus.textContent='Sending your inquiry…';
   try{
-    const response=await fetch(endpoint,{method:'POST',body:data,headers:{Accept:'application/json'}});
-    if(!response.ok)throw new Error(`Inquiry failed: ${response.status}`);
+    // A plain form post, so the Google Apps Script endpoint needs no CORS preflight.
+    const response=await fetch(endpoint,{method:'POST',body:new URLSearchParams(data),headers:{Accept:'application/json'}});
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok||result.ok===false)throw new Error(result.error||`Inquiry failed: ${response.status}`);
     form.reset();
     document.querySelector('#inquiry-sent-note').textContent=`I’ll reply to ${email}.`;
     form.classList.add('is-sent');

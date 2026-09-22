@@ -19,7 +19,16 @@ Run `python3 -m http.server 4173 --bind 127.0.0.1 --directory dist` from this di
 
 This is a reviewable concept, not a deployed replacement. Original photography and campaign facts were obtained from Peter's public website on 2026-09-20. See `ASSET-SOURCES.md`. Project descriptions and credits are copied from the original portfolio; projects without descriptions remain photos-only. All 181 gallery entries across 14 source records are represented, plus two unique Moon Rocks featured/cover frames. About copy remains proposed copy for Peter to review.
 
-The inquiry form posts to Formspree and shows a confirmation on the page; Formspree emails each inquiry with the visitor's address as reply-to. To connect it, create a Formspree form and add its URL as the `action` of `#inquiry-form` in `dist/index.html` (for example `action="https://formspree.io/f/abcdwxyz"`). Until an action is set, submitting opens a prefilled email draft instead. A hidden `_gotcha` field filters simple spam bots. The form does not reserve dates or connect to a calendar.
+The inquiry form posts to a Google Apps Script web app (`integrations/inquiries.gs`) and shows a confirmation on the page. The script emails each inquiry to info@petersanjur.com with the visitor's address as Reply-To, and adds it to the Client Submissions database ("tally") on the Creator Quest page in Notion: Name, Email, Project Type, Project Date, Budget Range, Project Description, Customer Journey = New Submission, and Source = Website. The optional budget dropdown offers $1,000–$2,500, $2,500–$5,000, $5,000–$10,000, and $10,000+, matching the Notion Budget Range options exactly (older options stay in Notion for past rows). Email and Notion are attempted independently, so one failing never loses the inquiry, and the email notes whether the Notion row was created. Until the web app's `/exec` URL is set as the `action` of `#inquiry-form` in `dist/index.html`, submitting opens a prefilled email draft instead. A hidden `_gotcha` field filters simple spam bots. "When are you thinking?" is an optional native date picker (no past dates); the date is sent as `preferred_date` in YYYY-MM-DD form and added to the subject, for example "Project inquiry — Studio inquiry — Name — Sun, Mar 14, 2027", so inquiries sort and scan by date. The form does not reserve dates or connect to a calendar.
+
+### Contact form: email and Notion setup
+
+1. Notion: at notion.so/profile/integrations create an internal integration named "petersanjur.com inquiries" and copy its secret. Open Client Submissions on Creator Quest, then ••• → Connections → add that integration.
+2. Google: signed in as the account for info@petersanjur.com, create a project at script.google.com and paste in `integrations/inquiries.gs`. Under Project Settings → Script properties, add `NOTION_TOKEN` with the secret.
+3. Select `checkSetup` and click Run. Approve Google's permission prompts; a "setup check passed" email confirms both connections.
+4. Deploy → New deployment → Web app, Execute as: Me, Who has access: Anyone. Put the `/exec` URL in the form's `action`.
+
+The Notion secret lives only in the script's properties; never commit it.
 
 The shop lives in the footer as a coming-soon note with an inquiry link; the full shop section was removed from the page and navigation. It has no invented products, prices, checkout, or payment processing. Add confirmed products, fulfillment details, and a checkout provider before opening sales. Add motion work when the chosen reel and film credits are available.
 

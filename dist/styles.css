@@ -68,3 +68,8 @@ footer{padding:35px 24px 15px;border-top:1px solid #333}.footer-top,.footer-bott
 .project-page{background:var(--paper);color:var(--ink)}
 .project-page .dialog-top .wordmark{color:var(--ink)}
 .project-page .close-dialog{border:1px solid var(--ink);padding:12px 16px}
+
+/* Contact date picker: grey like the other hints until a date is chosen, clickable anywhere. */
+.contact-section input[type="date"]{cursor:pointer;min-height:52px}
+.contact-section input[type="date"][data-empty]{color:#999;font-size:14px}
+.contact-section input[type="date"]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.7}

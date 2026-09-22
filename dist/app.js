@@ -242,6 +242,20 @@ function startIntro(manual=false){
   ],{duration:1100,delay:reveal+50+i*120,easing:'cubic-bezier(.65,0,.2,1)'}));
   if(manual)opening.querySelector('.skip-intro').focus({preventScroll:true});
   introTimer=setTimeout(finishIntro,reveal+1300);
+  // In-app browsers (like Instagram's) resize the page while it loads, moving the
+  // real title after we measured it. Follow it every frame until the intro ends;
+  // if its size changes, start over so the letters line up again.
+  const width=rect.width;
+  const follow=()=>{
+    if(opening.hidden)return;
+    const now=target.getBoundingClientRect(),base=opening.getBoundingClientRect();
+    if(Math.abs(now.width-width)>1){startIntro(manual);return;}
+    const top=Math.min(now.top,Math.max(16,window.innerHeight-now.height-64))-base.top;
+    name.style.left=`${now.left-base.left}px`;name.style.top=`${top}px`;
+    caret.style.left=`${now.left-base.left}px`;caret.style.top=`${top+now.height*.08}px`;
+    requestAnimationFrame(follow);
+  };
+  requestAnimationFrame(follow);
   }catch(error){
     // Never leave visitors behind a blank overlay: show the finished page instead.
     finishIntro();return;
@@ -278,7 +292,9 @@ replayButton.addEventListener('click',()=>startIntro(true));
 window.addEventListener('keydown',event=>{if(event.key==='Escape'&&!opening.hidden)finishIntro();});
 document.addEventListener('focusin',event=>{if(!opening.hidden&&!opening.contains(event.target))finishIntro();});
 window.addEventListener('hashchange',finishIntro);
-window.addEventListener('resize',()=>{if(!opening.hidden)finishIntro();});
+// Height-only resizes (toolbars sliding in) are followed; a new width means a new layout.
+let introWidth=window.innerWidth;
+window.addEventListener('resize',()=>{if(!opening.hidden&&window.innerWidth!==introWidth)finishIntro();introWidth=window.innerWidth;});
 window.addEventListener('wheel',()=>{if(!opening.hidden)finishIntro();},{passive:true});
 window.addEventListener('touchstart',()=>{if(!opening.hidden)finishIntro();},{passive:true});
 window.addEventListener('keydown',event=>{if(!opening.hidden&&['ArrowDown','PageDown','End',' '].includes(event.key))finishIntro();});

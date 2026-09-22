@@ -60,7 +60,7 @@
       if(item.tagName==='IMG')item.alt=`${project.title} — ${project.client||project.category}`;
       item.className='montage-image-in';item.style.animationDelay=`${i*90}ms`;item.style.objectPosition=heroSettings.positions?.[keys[i]]||'';
       panel.append(item);panel.href=`portfolio/${project.slug}/`;panel.dataset.project=keys[i];
-      panel.querySelector('span').textContent=`${project.title} ↗`;
+      panel.querySelector('span').textContent=`${project.title} ↗︎`;
       setTimeout(()=>old.forEach(item=>item.remove()),1100);
     });
     collection=target;count.textContent=label(collection);

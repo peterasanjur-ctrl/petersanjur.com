@@ -1526,7 +1526,7 @@
     "category": "Commercial",
     "year": "2025",
     "location": "Dallas, TX",
-    "description": "Shot in the dead of winter in Dallas, Burn It All is a visually explosive campaign for Hashira Studios’ new hoodie and pant drop. Conceived by creative director Julio Sanchez, the project explores the theme of toxic love set against a backdrop of surreal destruction — including nuclear blasts and a city seemingly engulfed in flames.\n\nI led the photography, lighting, editing, and video direction, working closely with models Bethany and Andrew to capture moments that felt intense and cinematic. Despite shooting in 20-degree weather and struggling to start a frozen generator mid-shoot, we pushed through and created some of our most evocative imagery yet. Josh Tran assisted on set with lighting and gaffing to help bring the chaos to life.\n\nCredits:\nPhotography, Video, Lighting, Editing – Peter Sanjur\nCreative Director – Julio Sanchez\nAssistant / Gaffer – Josh Tran\nModels – Bethany & Andrew\nClient – Hashira Studios",
+    "description": "Shot in the dead of winter in Dallas, Burn It All is a visually explosive campaign for Hashira Studios’ new hoodie and pant drop. Conceived by creative director Julio Sanchez, it explores toxic love against a backdrop of surreal destruction, from nuclear blasts to a city seemingly engulfed in flames.\n\nI led photography, lighting, editing, and video direction, working with models Bethany and Andrew to capture moments that feel intense and cinematic. Despite 20-degree weather and a generator that froze mid-shoot, we pushed through and made some of our most evocative imagery yet, with Josh Tran assisting on lighting and gaffing.",
     "source": "https://www.petersanjur.com/portfolio/hashirastudios-burnitall",
     "originalGalleryCount": 8,
     "cover": {
@@ -1585,7 +1585,29 @@
         "src": "assets/projects/hashirastudios-burnitall/08.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography, video, lighting & editing",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Creative direction",
+        "name": "Julio Sanchez"
+      },
+      {
+        "role": "Models",
+        "name": "Bethany & Andrew"
+      },
+      {
+        "role": "Assistant & gaffer",
+        "name": "Josh Tran"
+      },
+      {
+        "role": "Client",
+        "name": "Hashira Studios"
+      }
+    ]
   },
   {
     "key": "fitish",
@@ -1594,7 +1616,7 @@
     "category": "Commercial",
     "year": "2024",
     "location": "Dallas, TX",
-    "description": "For FITISH’s Fall 2024 beauty launch, we created a visually rich campaign titled “Dewing It At Night”, blending bold skincare visuals with a relaxed, nighttime aesthetic. Shot at Production House studio in Dallas, Texas, the project features close-up beauty and product imagery inspired by a girls-night-in concept.\n\nWith makeup by Kelsey and creative direction rooted in FITISH’s signature balance of chill and chic, the visuals highlight both the product’s glow and the lifestyle it represents. I led the project as both photographer and videographer, capturing stills and motion for multi-platform use.",
+    "description": "For FITISH’s Fall 2024 beauty launch, we created “Dewing It At Night,” a campaign that pairs bold skincare visuals with a relaxed, nighttime, girls-night-in feel. We shot close-up beauty and product imagery at Production House, Kelsey’s studio in Dallas.\n\nKelsey produced the shoot and did hair and makeup, and the visuals lean into FITISH’s balance of chill and chic, highlighting both the product’s glow and the lifestyle around it. I shot both photography and video, capturing stills and motion for use across platforms.",
     "source": "https://www.petersanjur.com/portfolio/fitish-campaign",
     "originalGalleryCount": 28,
     "cover": {
@@ -1773,7 +1795,25 @@
         "src": "assets/projects/fitish/28.jpg"
       }
     ],
-    "films": []
+    "films": [],
+    "credits": [
+      {
+        "role": "Photography & video",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Producer, hair & makeup",
+        "name": "Kelsey"
+      },
+      {
+        "role": "Studio",
+        "name": "Production House"
+      },
+      {
+        "role": "Client",
+        "name": "FITISH"
+      }
+    ]
   },
   {
     "key": "untie",

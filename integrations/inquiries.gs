@@ -140,6 +140,7 @@ function reply(data) {
 
 const STUDIO_DATABASE_ID = 'e04b2d26da204b77a69ae6d6e56bd7f2'; // Studio Bookings, next to Client Submissions
 const STUDIO_TIME_ZONE = 'America/Chicago';
+// The street address only goes out once a booking is approved (confirmation email and calendar invite).
 const STUDIO_ADDRESS = '1409 Botham Jean Blvd, Dallas, Texas';
 const STUDIO_MIN_HOURS = 2;
 const STUDIO_RATE = 125; // dollars per hour
@@ -242,11 +243,11 @@ function emailBookingReceipt(booking) {
     replyTo: to,
     name: 'Peter Sanjur Studio',
     subject: 'Your studio request \u2014 ' + bookingWhen(booking),
-    body: 'Hi ' + firstName(booking) + ',\n\nThanks for your request to book the studio. I\u2019ll check the calendar and confirm shortly.\n\n' + bookingLines(booking).join('\n') + '\n\nQuestions or changes? Just reply to this email.\n\nPeter Sanjur Studio\n' + STUDIO_ADDRESS,
+    body: 'Hi ' + firstName(booking) + ',\n\nThanks for your request to book the studio. I\u2019ll check the calendar and confirm shortly.\n\n' + bookingLines(booking).join('\n') + '\n\nQuestions or changes? Just reply to this email.\n\nPeter Sanjur Studio\nDowntown Dallas',
     htmlBody: emailShell(
       '<p>Hi ' + esc(firstName(booking)) + ',</p><p>Thanks for your request to book the studio. I\u2019ll check the calendar and confirm shortly.</p>' +
       detailTable(booking) +
-      '<p style="margin-top:24px">Questions or changes? Just reply to this email.</p><p style="color:#777">Peter Sanjur Studio<br>' + STUDIO_ADDRESS + '</p>')
+      '<p style="margin-top:24px">Questions or changes? Just reply to this email.</p><p style="color:#777">Peter Sanjur Studio<br>Downtown Dallas</p>')
   });
 }
 

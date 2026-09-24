@@ -1,5 +1,210 @@
 [
   {
+    "key": "susan-shaw",
+    "title": "Susan Shaw",
+    "client": "Susan Shaw",
+    "category": "Jewelry campaign films",
+    "year": "2026",
+    "location": "",
+    "description": "A collection of campaign films for jewelry company Susan Shaw, from pre-spring through fall. We've worked together across several seasons, and their creative direction makes every one a pleasure to shoot.",
+    "cover": {
+      "src": "assets/projects/susan-shaw/al-fresco-cover.jpg",
+      "width": 2880,
+      "height": 2160
+    },
+    "images": [],
+    "films": [],
+    "campaigns": [
+      {
+        "title": "Pre-Spring",
+        "images": [],
+        "films": [
+          {
+            "title": "Al Fresco Lunch",
+            "src": "assets/projects/susan-shaw/film-1.mp4",
+            "poster": "assets/projects/susan-shaw/poster-1.jpg",
+            "width": 1440,
+            "height": 1080,
+            "duration": 55.082667
+          },
+          {
+            "title": "Cabbage Patch",
+            "src": "assets/projects/susan-shaw/film-2.mp4",
+            "poster": "assets/projects/susan-shaw/poster-2.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 23.957333
+          },
+          {
+            "title": "Easter Egg Painting",
+            "src": "assets/projects/susan-shaw/film-3.mp4",
+            "poster": "assets/projects/susan-shaw/poster-3.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 11.690667
+          },
+          {
+            "title": "Mahjong",
+            "src": "assets/projects/susan-shaw/film-4.mp4",
+            "poster": "assets/projects/susan-shaw/poster-4.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 30.165333
+          }
+        ]
+      },
+      {
+        "title": "Spring",
+        "images": [],
+        "films": [
+          {
+            "title": "America Core",
+            "src": "assets/projects/susan-shaw/film-5.mp4",
+            "poster": "assets/projects/susan-shaw/poster-5.jpg",
+            "width": 2160,
+            "height": 3840,
+            "duration": 21.952
+          },
+          {
+            "title": "Mother’s Day Interview",
+            "src": "assets/projects/susan-shaw/film-6.mp4",
+            "poster": "assets/projects/susan-shaw/poster-6.jpg",
+            "width": 2160,
+            "height": 3840,
+            "duration": 100.864
+          },
+          {
+            "title": "The Art of Handmade",
+            "src": "assets/projects/susan-shaw/film-7.mp4",
+            "poster": "assets/projects/susan-shaw/poster-7.jpg",
+            "width": 2880,
+            "height": 2160,
+            "duration": 41.28
+          },
+          {
+            "title": "The Jewelry Box",
+            "src": "assets/projects/susan-shaw/film-8.mp4",
+            "poster": "assets/projects/susan-shaw/poster-8.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 26.538667
+          },
+          {
+            "title": "Valen Interview",
+            "src": "assets/projects/susan-shaw/film-9.mp4",
+            "poster": "assets/projects/susan-shaw/poster-9.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 40.789333
+          },
+          {
+            "title": "Is That My Necklace?",
+            "src": "assets/projects/susan-shaw/film-10.mp4",
+            "poster": "assets/projects/susan-shaw/poster-10.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 28.565333
+          },
+          {
+            "title": "Valen — Crib",
+            "src": "assets/projects/susan-shaw/film-11.mp4",
+            "poster": "assets/projects/susan-shaw/poster-11.jpg",
+            "width": 2160,
+            "height": 3840,
+            "duration": 17.152
+          }
+        ]
+      },
+      {
+        "title": "Summer",
+        "images": [],
+        "films": [
+          {
+            "title": "American BBQ",
+            "src": "assets/projects/susan-shaw/film-12.mp4",
+            "poster": "assets/projects/susan-shaw/poster-12.jpg",
+            "width": 1440,
+            "height": 1080,
+            "duration": 47.232
+          },
+          {
+            "title": "Bridge Game",
+            "src": "assets/projects/susan-shaw/film-13.mp4",
+            "poster": "assets/projects/susan-shaw/poster-13.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 35.456
+          },
+          {
+            "title": "Sunbathing",
+            "src": "assets/projects/susan-shaw/film-14.mp4",
+            "poster": "assets/projects/susan-shaw/poster-14.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 24.832
+          },
+          {
+            "title": "Fireworks",
+            "src": "assets/projects/susan-shaw/film-15.mp4",
+            "poster": "assets/projects/susan-shaw/poster-15.jpg",
+            "width": 2880,
+            "height": 2160,
+            "duration": 23.786667
+          }
+        ]
+      },
+      {
+        "title": "Fall",
+        "images": [],
+        "films": [
+          {
+            "title": "Fall Compilation",
+            "src": "assets/projects/susan-shaw/film-16.mp4",
+            "poster": "assets/projects/susan-shaw/poster-16.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 28.16
+          },
+          {
+            "title": "Into the Field",
+            "src": "assets/projects/susan-shaw/film-17.mp4",
+            "poster": "assets/projects/susan-shaw/poster-17.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 36.864
+          },
+          {
+            "title": "On the Water",
+            "src": "assets/projects/susan-shaw/film-18.mp4",
+            "poster": "assets/projects/susan-shaw/poster-18.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 22.954667
+          },
+          {
+            "title": "Lodge Living",
+            "src": "assets/projects/susan-shaw/film-19.mp4",
+            "poster": "assets/projects/susan-shaw/poster-19.jpg",
+            "width": 1080,
+            "height": 1920,
+            "duration": 28.650667
+          }
+        ]
+      }
+    ],
+    "client_url": "https://susanshaw.com/",
+    "credits": [
+      {
+        "role": "Campaign films",
+        "name": "Peter Sanjur"
+      },
+      {
+        "role": "Client & creative direction",
+        "name": "Susan Shaw"
+      }
+    ]
+  },
+  {
     "key": "america",
     "title": "America",
     "client": "Personal Work",
@@ -781,211 +986,6 @@
       {
         "name": "Bong Mines Entertainment",
         "url": "https://bongminesentertainment.com/rosama-my-forte/"
-      }
-    ]
-  },
-  {
-    "key": "susan-shaw",
-    "title": "Susan Shaw",
-    "client": "Susan Shaw",
-    "category": "Jewelry campaign films",
-    "year": "2026",
-    "location": "",
-    "description": "A collection of campaign films for jewelry company Susan Shaw, from pre-spring through fall. We've worked together across several seasons, and their creative direction makes every one a pleasure to shoot.",
-    "cover": {
-      "src": "assets/projects/susan-shaw/al-fresco-cover.jpg",
-      "width": 2880,
-      "height": 2160
-    },
-    "images": [],
-    "films": [],
-    "campaigns": [
-      {
-        "title": "Pre-Spring",
-        "images": [],
-        "films": [
-          {
-            "title": "Al Fresco Lunch",
-            "src": "assets/projects/susan-shaw/film-1.mp4",
-            "poster": "assets/projects/susan-shaw/poster-1.jpg",
-            "width": 1440,
-            "height": 1080,
-            "duration": 55.082667
-          },
-          {
-            "title": "Cabbage Patch",
-            "src": "assets/projects/susan-shaw/film-2.mp4",
-            "poster": "assets/projects/susan-shaw/poster-2.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 23.957333
-          },
-          {
-            "title": "Easter Egg Painting",
-            "src": "assets/projects/susan-shaw/film-3.mp4",
-            "poster": "assets/projects/susan-shaw/poster-3.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 11.690667
-          },
-          {
-            "title": "Mahjong",
-            "src": "assets/projects/susan-shaw/film-4.mp4",
-            "poster": "assets/projects/susan-shaw/poster-4.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 30.165333
-          }
-        ]
-      },
-      {
-        "title": "Spring",
-        "images": [],
-        "films": [
-          {
-            "title": "America Core",
-            "src": "assets/projects/susan-shaw/film-5.mp4",
-            "poster": "assets/projects/susan-shaw/poster-5.jpg",
-            "width": 2160,
-            "height": 3840,
-            "duration": 21.952
-          },
-          {
-            "title": "Mother’s Day Interview",
-            "src": "assets/projects/susan-shaw/film-6.mp4",
-            "poster": "assets/projects/susan-shaw/poster-6.jpg",
-            "width": 2160,
-            "height": 3840,
-            "duration": 100.864
-          },
-          {
-            "title": "The Art of Handmade",
-            "src": "assets/projects/susan-shaw/film-7.mp4",
-            "poster": "assets/projects/susan-shaw/poster-7.jpg",
-            "width": 2880,
-            "height": 2160,
-            "duration": 41.28
-          },
-          {
-            "title": "The Jewelry Box",
-            "src": "assets/projects/susan-shaw/film-8.mp4",
-            "poster": "assets/projects/susan-shaw/poster-8.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 26.538667
-          },
-          {
-            "title": "Valen Interview",
-            "src": "assets/projects/susan-shaw/film-9.mp4",
-            "poster": "assets/projects/susan-shaw/poster-9.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 40.789333
-          },
-          {
-            "title": "Is That My Necklace?",
-            "src": "assets/projects/susan-shaw/film-10.mp4",
-            "poster": "assets/projects/susan-shaw/poster-10.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 28.565333
-          },
-          {
-            "title": "Valen — Crib",
-            "src": "assets/projects/susan-shaw/film-11.mp4",
-            "poster": "assets/projects/susan-shaw/poster-11.jpg",
-            "width": 2160,
-            "height": 3840,
-            "duration": 17.152
-          }
-        ]
-      },
-      {
-        "title": "Summer",
-        "images": [],
-        "films": [
-          {
-            "title": "American BBQ",
-            "src": "assets/projects/susan-shaw/film-12.mp4",
-            "poster": "assets/projects/susan-shaw/poster-12.jpg",
-            "width": 1440,
-            "height": 1080,
-            "duration": 47.232
-          },
-          {
-            "title": "Bridge Game",
-            "src": "assets/projects/susan-shaw/film-13.mp4",
-            "poster": "assets/projects/susan-shaw/poster-13.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 35.456
-          },
-          {
-            "title": "Sunbathing",
-            "src": "assets/projects/susan-shaw/film-14.mp4",
-            "poster": "assets/projects/susan-shaw/poster-14.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 24.832
-          },
-          {
-            "title": "Fireworks",
-            "src": "assets/projects/susan-shaw/film-15.mp4",
-            "poster": "assets/projects/susan-shaw/poster-15.jpg",
-            "width": 2880,
-            "height": 2160,
-            "duration": 23.786667
-          }
-        ]
-      },
-      {
-        "title": "Fall",
-        "images": [],
-        "films": [
-          {
-            "title": "Fall Compilation",
-            "src": "assets/projects/susan-shaw/film-16.mp4",
-            "poster": "assets/projects/susan-shaw/poster-16.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 28.16
-          },
-          {
-            "title": "Into the Field",
-            "src": "assets/projects/susan-shaw/film-17.mp4",
-            "poster": "assets/projects/susan-shaw/poster-17.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 36.864
-          },
-          {
-            "title": "On the Water",
-            "src": "assets/projects/susan-shaw/film-18.mp4",
-            "poster": "assets/projects/susan-shaw/poster-18.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 22.954667
-          },
-          {
-            "title": "Lodge Living",
-            "src": "assets/projects/susan-shaw/film-19.mp4",
-            "poster": "assets/projects/susan-shaw/poster-19.jpg",
-            "width": 1080,
-            "height": 1920,
-            "duration": 28.650667
-          }
-        ]
-      }
-    ],
-    "client_url": "https://susanshaw.com/",
-    "credits": [
-      {
-        "role": "Campaign films",
-        "name": "Peter Sanjur"
-      },
-      {
-        "role": "Client & creative direction",
-        "name": "Susan Shaw"
       }
     ]
   },

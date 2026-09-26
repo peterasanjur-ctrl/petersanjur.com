@@ -30,9 +30,9 @@ function doPost(e) {
   const loadedAt = Number(form._t);
   if (loadedAt && Date.now() - loadedAt < 3000) return reply({ ok: true });
   if (form.action === 'approve') return approveBooking(form);
-  if (form.form_kind === 'studio') return studioRequest(form, (e.parameters && e.parameters.gear) || []);
   const spam = spamReason(form);
   if (spam) return quarantine(form, spam);
+  if (form.form_kind === 'studio') return studioRequest(form, (e.parameters && e.parameters.gear) || []);
 
   const inquiry = {
     name: clean(form.name, 100),
@@ -60,12 +60,14 @@ function doPost(e) {
 // The review link in a studio request email opens the booking to approve.
 // Signs of the bot inquiries contact forms get. A flagged inquiry is dropped;
 // Executions in the Apps Script editor lists what was blocked and why.
+const BLOCKED_NAMES = ['robertgok'];
+
 function spamReason(form) {
   const name = String(form.name || '').trim();
   const message = String(form.message || '');
   if (!form._t) return 'sent without the page\'s script (likely a bot posting directly)';
   if (/https?:\/\/|www\.|\[url|<a\s/i.test(message + ' ' + name)) return 'contains a link';
-  if (/^[A-Z][a-z]+[A-Z][a-z]+$/.test(name)) return 'name looks generated (' + name + ')';
+  if (BLOCKED_NAMES.indexOf(name.toLowerCase()) >= 0) return 'known spam name (' + name + ')';
   if (message.length < 160 && /\b(price|prices|prix|preis|precio|prezzo|pre\u00e7o|phraghas|prijs|pris|hinta|cen\u0119|\u0446\u0435\u043d)/i.test(message) && !/photo|shoot|film|video|campaign|studio|model/i.test(message)) return 'matches the "what is your price" bot template';
   return '';
 }
@@ -198,7 +200,9 @@ function studioRequest(form, gear) {
   try { booking.notionUrl = addBookingToNotion(booking); } catch (error) { problems.push('Notion: ' + error.message); }
   PropertiesService.getScriptProperties().setProperty('booking_' + booking.id, JSON.stringify(booking));
   try { emailBookingToPeter(booking, problems); } catch (error) { problems.push('Email: ' + error.message); }
-  try { emailBookingReceipt(booking); } catch (error) { problems.push('Receipt: ' + error.message); }
+  if (allowReceipt(booking.email)) {
+    try { emailBookingReceipt(booking); } catch (error) { problems.push('Receipt: ' + error.message); }
+  }
   if (problems.length) console.error(problems.join('\n'));
   return reply({ ok: problems.length < 3 });
 }
@@ -258,6 +262,19 @@ function emailBookingToPeter(booking, problems) {
       '<p style="color:#555">Reply to this email to message ' + esc(booking.name) + ' directly.</p>' +
       '<p style="color:#999;font-size:12px">' + (booking.notionUrl ? '<a href="' + booking.notionUrl + '" style="color:#999">Open in Notion</a>' : esc(notion)) + '</p>')
   });
+}
+
+// A receipt goes to whatever address was typed, so limit how many go out: one per
+// address every 6 hours, and no more than 10 an hour overall. Peter's own email is unaffected.
+function allowReceipt(email) {
+  const cache = CacheService.getScriptCache();
+  const addressKey = 'receipt_' + email.toLowerCase();
+  const hourKey = 'receipts_' + Utilities.formatDate(new Date(), 'UTC', 'yyyyMMddHH');
+  const sentThisHour = Number(cache.get(hourKey) || 0);
+  if (cache.get(addressKey) || sentThisHour >= 10) return false;
+  cache.put(addressKey, '1', 21600);
+  cache.put(hourKey, String(sentThisHour + 1), 3600);
+  return true;
 }
 
 function emailBookingReceipt(booking) {

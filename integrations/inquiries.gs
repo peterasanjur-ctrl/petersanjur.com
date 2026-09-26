@@ -26,8 +26,13 @@ function doPost(e) {
   const form = (e && e.parameter) || {};
   // The hidden _gotcha field is invisible to people, so anything in it came from a bot.
   if (form._gotcha) return reply({ ok: true });
+  // Real visitors take more than a few seconds to fill in a form.
+  const loadedAt = Number(form._t);
+  if (loadedAt && Date.now() - loadedAt < 3000) return reply({ ok: true });
   if (form.action === 'approve') return approveBooking(form);
   if (form.form_kind === 'studio') return studioRequest(form, (e.parameters && e.parameters.gear) || []);
+  const spam = spamReason(form);
+  if (spam) return quarantine(form, spam);
 
   const inquiry = {
     name: clean(form.name, 100),
@@ -53,6 +58,29 @@ function doPost(e) {
 
 // Visiting the web app URL in a browser just confirms it is running.
 // The review link in a studio request email opens the booking to approve.
+// Signs of the bot inquiries contact forms get. A flagged inquiry skips Notion
+// and is emailed with "Possible spam" in the subject, so nothing real is lost.
+function spamReason(form) {
+  const name = String(form.name || '').trim();
+  const message = String(form.message || '');
+  if (!form._t) return 'sent without the page\'s script (likely a bot posting directly)';
+  if (/https?:\/\/|www\.|\[url|<a\s/i.test(message + ' ' + name)) return 'contains a link';
+  if (/^[A-Z][a-z]+[A-Z][a-z]+$/.test(name)) return 'name looks generated (' + name + ')';
+  if (message.length < 160 && /\b(price|prices|prix|preis|precio|prezzo|pre\u00e7o|phraghas|prijs|pris|hinta|cen\u0119|\u0446\u0435\u043d)/i.test(message) && !/photo|shoot|film|video|campaign|studio|model/i.test(message)) return 'matches the "what is your price" bot template';
+  return '';
+}
+
+function quarantine(form, reason) {
+  const to = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL') || DEFAULT_NOTIFY_EMAIL;
+  MailApp.sendEmail({
+    to: to,
+    name: 'petersanjur.com',
+    subject: 'Possible spam \u2014 ' + clean(form.name, 60),
+    body: 'Held back from Notion because it ' + reason + '.\nIf this is a real inquiry, reply to the sender directly.\n\nName: ' + clean(form.name, 100) + '\nEmail: ' + clean(form.email, 160) + '\nProject: ' + clean(form.type, 60) + '\n\n' + clean(form.message, 2000)
+  });
+  return reply({ ok: true });
+}
+
 function doGet(e) {
   const params = (e && e.parameter) || {};
   if (params.booking) return reviewBooking(params.booking, params.sig);

@@ -113,6 +113,8 @@ window.addEventListener('hashchange',syncProject);
 syncProject();
 
 const form=document.querySelector('#inquiry-form');
+// When the page loaded; the inquiry script uses it to spot bots that post instantly.
+if(form?.elements._t)form.elements._t.value=Date.now();
 const inquiryStatus=document.querySelector('#inquiry-status');
 const inquirySent=document.querySelector('#inquiry-sent');
 const sendButton=form.querySelector('[type="submit"]');

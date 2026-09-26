@@ -76,6 +76,7 @@ applyMotion();
 // Booking request: half-hour slots, a live hours count, and a 2 hour minimum.
 const booking=document.querySelector('#booking-form');
 if(booking){
+  if(booking.elements._t)booking.elements._t.value=Date.now();
   const {booking_date:day,start_time:start,end_time:end}=booking.elements;
   const hoursNote=booking.querySelector('#booking-hours');
   const status=booking.querySelector('#booking-status');

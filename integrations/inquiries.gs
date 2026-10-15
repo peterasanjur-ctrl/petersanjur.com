@@ -29,7 +29,6 @@ function doPost(e) {
   // Real visitors take more than a few seconds to fill in a form.
   const loadedAt = Number(form._t);
   if (loadedAt && Date.now() - loadedAt < 3000) return reply({ ok: true });
-  if (form.action === 'approve') return approveBooking(form);
   const spam = spamReason(form);
   if (spam) return quarantine(form, spam);
   if (form.form_kind === 'studio') return studioRequest(form, (e.parameters && e.parameters.gear) || []);
@@ -292,52 +291,99 @@ function emailBookingReceipt(booking) {
   });
 }
 
-// The review page shows the request and any calendar conflicts. Approving is a
-// button (a POST), so link scanners that open emails can't approve by accident.
+// The review page walks a request through three steps, each a button on the page:
+//   Requested  -> Approve: holds the time on the calendar and asks the client to pay
+//   Approved   -> Mark paid: confirms, invites the client, and shares the address
+//   (any time) -> Decline: lets the client know kindly
+// The buttons call bookingAction() directly (google.script.run), which works inside
+// Google's sandboxed page where an ordinary form post does not.
 function reviewBooking(id, sig) {
   const booking = loadBooking(id, sig);
   if (!booking) return page('Link not valid', '<p>This booking link is invalid or has expired.</p>');
-  if (booking.approved) return page('Already booked', '<p>' + esc(booking.name) + ' is booked for ' + esc(bookingWhen(booking)) + '. It\u2019s on your calendar.</p>');
-  const clashes = CalendarApp.getDefaultCalendar().getEvents(studioTime(booking, booking.start), studioTime(booking, booking.end));
-  const warning = clashes.length ? '<p style="background:#fff3cd;padding:12px 14px">Heads up: this overlaps ' + clashes.map(function (event) { return '\u201c' + esc(event.getTitle()) + '\u201d'; }).join(', ') + ' on your calendar.</p>' : '<p style="color:#2e7d32">Your calendar is free at this time.</p>';
-  return page('Studio request', '<h1 style="font-size:24px;margin:0 0 20px">' + esc(bookingWhen(booking)) + '</h1>' + detailTable(booking) + warning +
-    '<form method="post" action="' + ScriptApp.getService().getUrl() + '" target="_top">' +
-    '<input type="hidden" name="action" value="approve"><input type="hidden" name="booking" value="' + esc(id) + '"><input type="hidden" name="sig" value="' + esc(sig) + '">' +
-    '<button style="background:#111;color:#fff;border:0;padding:14px 22px;font:600 15px sans-serif;cursor:pointer">Approve &amp; add to calendar</button></form>' +
-    '<p style="color:#777;font-size:13px">Approving adds it to your Google Calendar, sends ' + esc(booking.name) + ' an invite, and emails them a confirmation. To decline or ask questions, just reply to the request email.</p>');
+  return page('Studio request', '<div id="app">' + reviewHtml(booking) + '</div>' +
+    '<script>function act(a){if(a==="decline"&&!confirm("Decline this request and email the client?"))return;' +
+    'document.querySelectorAll("button").forEach(function(b){b.disabled=true});document.getElementById("note").textContent="Working…";' +
+    'google.script.run.withSuccessHandler(function(h){document.getElementById("app").innerHTML=h;})' +
+    '.withFailureHandler(function(e){document.getElementById("note").textContent="Something went wrong: "+e.message;document.querySelectorAll("button").forEach(function(b){b.disabled=false});})' +
+    '.bookingAction(' + JSON.stringify(id) + ',' + JSON.stringify(sig) + ',a);}</script>');
 }
 
-function approveBooking(form) {
+function reviewHtml(booking) {
+  const total = '$' + money(booking.hours * STUDIO_RATE);
+  const button = function (action, label, dark) {
+    return '<button onclick="act(\'' + action + '\')" style="' + (dark ? 'background:#111;color:#fff;border:0' : 'background:#fff;color:#111;border:1px solid #bbb') + ';padding:13px 20px;font:600 15px sans-serif;cursor:pointer;margin:0 8px 8px 0">' + label + '</button>';
+  };
+  const head = '<h1 style="font-size:24px;margin:0 0 6px">' + esc(bookingWhen(booking)) + '</h1>';
+  if (booking.declined) return head + '<p>You declined this request and ' + esc(firstName(booking)) + ' was emailed.</p>';
+  if (booking.paid) return head + '<p style="color:#2e7d32"><strong>Booked ✓</strong> Paid and confirmed. ' + esc(booking.name) + ' has the calendar invite and the address.</p>' + detailTable(booking);
+  if (booking.approved) {
+    return head + '<p style="background:#eef4ff;padding:12px 14px"><strong>Approved, awaiting payment.</strong> Send ' + esc(booking.name) + ' a Square or PayPal invoice for <strong>' + total + '</strong> at ' + esc(booking.email) + '. The time is held on your calendar.</p>' +
+      detailTable(booking) + '<p style="margin-top:22px">' + button('paid', 'Mark paid &amp; confirm', true) + button('decline', 'Decline', false) + '</p>' +
+      '<p id="note" style="color:#777;font-size:13px">Once they’ve paid, Mark paid sends them the calendar invite and the studio address.</p>';
+  }
+  const clashes = CalendarApp.getDefaultCalendar().getEvents(studioTime(booking, booking.start), studioTime(booking, booking.end));
+  const warning = clashes.length ? '<p style="background:#fff3cd;padding:12px 14px">Heads up: this overlaps ' + clashes.map(function (event) { return '“' + esc(event.getTitle()) + '”'; }).join(', ') + ' on your calendar.</p>' : '<p style="color:#2e7d32">Your calendar is free at this time.</p>';
+  return head + detailTable(booking) + warning + '<p style="margin-top:22px">' + button('approve', 'Approve &amp; request payment', true) + button('decline', 'Decline', false) + '</p>' +
+    '<p id="note" style="color:#777;font-size:13px">Approving holds the time on your calendar and emails ' + esc(firstName(booking)) + ' that a ' + total + ' invoice is on its way. The booking is confirmed once you mark it paid.</p>';
+}
+
+function bookingAction(id, sig, action) {
   const lock = LockService.getScriptLock();
   lock.waitLock(20000);
   try {
-    const booking = loadBooking(form.booking, form.sig);
-    if (!booking) return page('Link not valid', '<p>This booking link is invalid or has expired.</p>');
-    if (booking.approved) return page('Already booked', '<p>' + esc(booking.name) + ' is already on your calendar for ' + esc(bookingWhen(booking)) + '.</p>');
-    const event = CalendarApp.getDefaultCalendar().createEvent(
-      'Studio: ' + booking.name + (booking.company ? ' (' + booking.company + ')' : '') + ' \u2014 ' + booking.activity,
-      studioTime(booking, booking.start), studioTime(booking, booking.end),
-      { location: STUDIO_ADDRESS, description: bookingLines(booking).join('\n') + (booking.notionUrl ? '\n\nNotion: ' + booking.notionUrl : ''), guests: booking.email, sendInvites: true });
-    booking.approved = new Date().toISOString();
-    booking.eventId = event.getId();
-    PropertiesService.getScriptProperties().setProperty('booking_' + booking.id, JSON.stringify(booking));
-    if (booking.notionId) {
-      try { notionRequest('patch', 'pages/' + booking.notionId, { properties: { 'Status': { select: { name: 'Booked' } } } }); } catch (error) { console.error('Notion status: ' + error.message); }
+    const booking = loadBooking(id, sig);
+    if (!booking) throw new Error('This booking link is invalid.');
+    const props = PropertiesService.getScriptProperties();
+    const replyTo = props.getProperty('NOTIFY_EMAIL') || DEFAULT_NOTIFY_EMAIL;
+    const total = '$' + money(booking.hours * STUDIO_RATE);
+    const send = function (subject, intro, extra) {
+      MailApp.sendEmail({ to: booking.email, replyTo: replyTo, name: 'Peter Sanjur Studio', subject: subject,
+        body: 'Hi ' + firstName(booking) + ',\n\n' + intro.replace(/<[^>]+>/g, '') + '\n\n' + bookingLines(booking).join('\n') + (extra ? '\n\n' + extra.replace(/<[^>]+>/g, '') : '') + '\n\nReply to this email with any questions.\n\nPeter Sanjur Studio',
+        htmlBody: emailShell('<p>Hi ' + esc(firstName(booking)) + ',</p><p>' + intro + '</p>' + detailTable(booking) + (extra ? '<p style="margin-top:24px">' + extra + '</p>' : '') + '<p>Reply to this email with any questions.</p><p style="color:#777">Peter Sanjur Studio</p>') });
+    };
+    if (action === 'approve' && !booking.approved && !booking.declined) {
+      const hold = CalendarApp.getDefaultCalendar().createEvent('HOLD (awaiting payment) — Studio: ' + booking.name,
+        studioTime(booking, booking.start), studioTime(booking, booking.end),
+        { description: bookingLines(booking).join('\n') + (booking.notionUrl ? '\n\nNotion: ' + booking.notionUrl : '') });
+      booking.approved = new Date().toISOString();
+      booking.eventId = hold.getId();
+      setNotionStatus(booking, 'Approved');
+      send('Approved — your studio booking for ' + bookingWhen(booking),
+        '<strong>Good news: your studio request is approved.</strong> To lock in the date, I’ll send you an invoice for <strong>' + total + '</strong> through Square or PayPal shortly. Your booking is confirmed once it’s paid, and I’ll follow up with the calendar invite and studio address.');
+    } else if (action === 'paid' && booking.approved && !booking.paid && !booking.declined) {
+      // Swap the private hold for the real event, which invites the client.
+      if (booking.eventId) { try { CalendarApp.getDefaultCalendar().getEventById(booking.eventId).deleteEvent(); } catch (error) {} }
+      const event = CalendarApp.getDefaultCalendar().createEvent(
+        'Studio: ' + booking.name + (booking.company ? ' (' + booking.company + ')' : '') + ' — ' + booking.activity,
+        studioTime(booking, booking.start), studioTime(booking, booking.end),
+        { location: STUDIO_ADDRESS, description: bookingLines(booking).join('\n') + (booking.notionUrl ? '\n\nNotion: ' + booking.notionUrl : ''), guests: booking.email, sendInvites: true });
+      booking.eventId = event.getId();
+      booking.paid = new Date().toISOString();
+      setNotionStatus(booking, 'Booked');
+      send('You’re booked — ' + bookingWhen(booking),
+        '<strong>Payment received, and you’re confirmed at the studio.</strong> A calendar invite is on its way.',
+        '<strong>Studio address:</strong> ' + STUDIO_ADDRESS);
+    } else if (action === 'decline' && !booking.paid && !booking.declined) {
+      if (booking.eventId) { try { CalendarApp.getDefaultCalendar().getEventById(booking.eventId).deleteEvent(); } catch (error) {} }
+      booking.declined = new Date().toISOString();
+      setNotionStatus(booking, 'Declined');
+      send('About your studio request for ' + bookingWhen(booking),
+        'Thank you for your interest in the studio. Unfortunately I can’t accommodate this booking. If another date works for you, I’d be glad to help. Just reply with a few options.');
     }
-    const to = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL') || DEFAULT_NOTIFY_EMAIL;
-    MailApp.sendEmail({
-      to: booking.email,
-      replyTo: to,
-      name: 'Peter Sanjur Studio',
-      subject: 'You\u2019re booked \u2014 ' + bookingWhen(booking),
-      body: 'Hi ' + firstName(booking) + ',\n\nYou\u2019re confirmed at the studio. A calendar invite is on its way.\n\n' + bookingLines(booking).join('\n') + '\n\nAddress: ' + STUDIO_ADDRESS + '\n\nReply to this email with any questions.\n\nPeter Sanjur Studio',
-      htmlBody: emailShell('<p>Hi ' + esc(firstName(booking)) + ',</p><p><strong>You\u2019re confirmed at the studio.</strong> A calendar invite is on its way.</p>' + detailTable(booking) +
-        '<p style="margin-top:24px">' + STUDIO_ADDRESS + '</p><p>Reply to this email with any questions.</p><p style="color:#777">Peter Sanjur Studio</p>')
-    });
-    return page('Booked', '<h1 style="font-size:24px;margin:0 0 12px">Booked \u2713</h1><p>' + esc(booking.name) + ' is on your calendar for ' + esc(bookingWhen(booking)) + '. They\u2019ve been sent an invite and a confirmation email.</p><p><a href="https://calendar.google.com/calendar/r/day/' + booking.date.replace(/-/g, '/') + '" target="_top">Open Google Calendar</a></p>');
+    props.setProperty('booking_' + booking.id, JSON.stringify(booking));
+    return reviewHtml(booking);
   } finally {
     lock.releaseLock();
   }
+}
+
+function setNotionStatus(booking, status) {
+  if (!booking.notionId) return;
+  try { notionRequest('patch', 'pages/' + booking.notionId, { properties: { 'Status': { select: { name: status } } } }); } catch (error) { console.error('Notion status: ' + error.message); }
+}
+
+function money(amount) {
+  return amount.toLocaleString('en-US', { minimumFractionDigits: amount % 1 ? 2 : 0 });
 }
 
 function loadBooking(id, sig) {

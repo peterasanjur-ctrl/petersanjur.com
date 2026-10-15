@@ -453,11 +453,11 @@ function squareInvoice(booking) {
   const inThreeDays = Utilities.formatDate(new Date(Date.now() + 3 * 864e5), STUDIO_TIME_ZONE, 'yyyy-MM-dd');
   const today = Utilities.formatDate(new Date(), STUDIO_TIME_ZONE, 'yyyy-MM-dd');
   const due = booking.date < today ? today : (booking.date < inThreeDays ? booking.date : inThreeDays);
-  const draft = squareRequest('post', 'invoices', { idempotency_key: booking.id + '-invoice', invoice: {
+  const draft = squareRequest('post', 'invoices', { idempotency_key: booking.id + '-invoice-v2', invoice: {
     location_id: location, order_id: order.id, primary_recipient: { customer_id: customerId },
     payment_requests: [{ request_type: 'BALANCE', due_date: due }],
     delivery_method: phone ? 'SMS' : 'SHARE_MANUALLY',
-    accepted_payment_methods: { card: true, cash_app_pay: true, square_gift_card: false, bank_account: false, buyer_now_pay_later: false },
+    accepted_payment_methods: { card: true, cash_app_pay: true, square_gift_card: false, bank_account: false },
     title: 'Peter Sanjur Studio', description: 'Studio booking: ' + bookingWhen(booking) + '. Your booking is confirmed once this is paid.' } }).invoice;
   const published = squareRequest('post', 'invoices/' + draft.id + '/publish', { version: draft.version, idempotency_key: booking.id + '-publish' }).invoice;
   booking.invoiceId = published.id;

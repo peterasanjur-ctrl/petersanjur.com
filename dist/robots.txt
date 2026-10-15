@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /studio-review.html
+Disallow: /studio-paid.html
 
 Sitemap: https://www.petersanjur.com/sitemap.xml

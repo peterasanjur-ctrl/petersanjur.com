@@ -327,17 +327,21 @@ function reviewHtml(booking) {
   if (booking.paid) return head + '<p style="color:#2e7d32"><strong>Booked \u2713</strong> Paid and confirmed. ' + esc(booking.name) + ' has the calendar invite and the address.</p>' + detailTable(booking);
   if (booking.approved) {
     const paidOnSquare = squarePaid(booking);
-    const invoiceNote = booking.payUrl
-      ? 'A Square invoice for <strong>' + total + '</strong> went to ' + esc(booking.email) + (booking.smsSent ? ' and by text to ' + esc(booking.phone) : '') + ' (<a href="' + booking.payUrl + '" target="_blank" rel="noopener">view invoice</a>). ' + (paidOnSquare ? '<strong style="color:#2e7d32">Square shows it\u2019s paid.</strong>' : 'Square doesn\u2019t show a payment yet.')
-      : 'The Square invoice couldn\u2019t be created' + (booking.squareError ? ' (' + esc(booking.squareError) + ')' : '') + ', so send ' + esc(booking.name) + ' one for <strong>' + total + '</strong> from Square directly.';
-    return head + '<p style="background:#eef4ff;padding:12px 14px"><strong>Approved, awaiting payment.</strong> ' + invoiceNote + ' The time is held on your calendar.</p>' +
-      detailTable(booking) + '<p style="margin-top:22px">' + (booking.payUrl ? '' : button('square', 'Try Square again', false)) + button('paid', 'Mark paid &amp; confirm', true) + button('decline', 'Decline', false) + '</p>' +
+    const hasLink = booking.payUrl && !booking.invoiceId;
+    const phone = phoneE164(booking.phone);
+    // Opens Messages on Peter's own phone or Mac with the link ready to send.
+    const textLink = hasLink && phone ? ' <a href="sms:' + phone + '?&body=' + encodeURIComponent('Hi ' + firstName(booking) + ', here\u2019s the link to pay ' + total + ' for your studio booking on ' + bookingWhen(booking) + ': ' + booking.payUrl) + '">Text it to ' + esc(firstName(booking)) + '</a>.' : '';
+    const linkNote = hasLink
+      ? 'A Square checkout link for <strong>' + total + '</strong> was emailed to ' + esc(booking.email) + ' (<a href="' + booking.payUrl + '" target="_blank" rel="noopener">open it</a>).' + textLink + ' ' + (paidOnSquare ? '<strong style="color:#2e7d32">Square shows it\u2019s paid.</strong>' : 'Square doesn\u2019t show a payment yet.')
+      : 'The Square payment link couldn\u2019t be created' + (booking.squareError ? ' (' + esc(booking.squareError) + ')' : '') + '. Try again below, or take payment from Square directly.';
+    return head + '<p style="background:#eef4ff;padding:12px 14px"><strong>Approved, awaiting payment.</strong> ' + linkNote + ' The time is held on your calendar.</p>' +
+      detailTable(booking) + '<p style="margin-top:22px">' + (hasLink ? '' : button('square', 'Create payment link', false)) + button('paid', 'Mark paid &amp; confirm', true) + button('decline', 'Decline', false) + '</p>' +
       '<p id="note" style="color:#777;font-size:13px">Once they\u2019ve paid, Mark paid sends them the calendar invite and the studio address.</p>';
   }
   const clashes = CalendarApp.getDefaultCalendar().getEvents(studioTime(booking, booking.start), studioTime(booking, booking.end));
   const warning = clashes.length ? '<p style="background:#fff3cd;padding:12px 14px">Heads up: this overlaps ' + clashes.map(function (event) { return '\u201c' + esc(event.getTitle()) + '\u201d'; }).join(', ') + ' on your calendar.</p>' : '<p style="color:#2e7d32">Your calendar is free at this time.</p>';
   return head + detailTable(booking) + warning + '<p style="margin-top:22px">' + button('approve', 'Approve &amp; request payment', true) + button('decline', 'Decline', false) + '</p>' +
-    '<p id="note" style="color:#777;font-size:13px">Approving holds the time on your calendar and sends ' + esc(firstName(booking)) + ' a Square payment link for ' + total + ' by email' + (booking.phone ? ' and text' : '') + '. The booking is confirmed once you mark it paid.</p>';
+    '<p id="note" style="color:#777;font-size:13px">Approving holds the time on your calendar and emails ' + esc(firstName(booking)) + ' a Square checkout link for ' + total + '. The booking is confirmed once you mark it paid.</p>';
 }
 
 function bookingAction(id, sig, action) {
@@ -361,15 +365,15 @@ function bookingAction(id, sig, action) {
       booking.approved = new Date().toISOString();
       booking.eventId = hold.getId();
       setNotionStatus(booking, 'Approved');
-      try { squareInvoice(booking); } catch (error) { booking.squareError = String((error && error.message) || error); console.error('Square: ' + booking.squareError); }
+      try { squareCheckout(booking); } catch (error) { booking.squareError = String((error && error.message) || error); console.error('Square: ' + booking.squareError); }
       const payButton = booking.payUrl ? '<a href="' + booking.payUrl + '" style="background:#111;color:#fff;padding:14px 22px;text-decoration:none;font-weight:600;display:inline-block">Pay ' + total + ' securely</a>' : '';
       send('Approved \u2014 your studio booking for ' + bookingWhen(booking),
-        '<strong>Good news: your studio request is approved.</strong> To lock in the date, please pay <strong>' + total + '</strong>' + (booking.payUrl ? ' through Square using the link below' + (booking.smsSent ? ' (it\u2019s also been texted to you)' : '') : '. I\u2019ll send you a Square invoice shortly') + '. Your booking is confirmed once it\u2019s paid, and I\u2019ll follow up with the calendar invite and studio address.',
+        '<strong>Good news: your studio request is approved.</strong> To lock in the date, please pay <strong>' + total + '</strong>' + (booking.payUrl ? ' securely through Square using the link below' : '. I\u2019ll send you a payment link shortly') + '. Your booking is confirmed once it\u2019s paid, and I\u2019ll follow up with the calendar invite and studio address.',
         booking.payUrl ? payButton + '<br><span style="color:#777;font-size:13px">' + booking.payUrl + '</span>' : '');
-    } else if (action === 'square' && booking.approved && !booking.payUrl && !booking.paid && !booking.declined) {
-      try { squareInvoice(booking); } catch (error) { booking.squareError = String((error && error.message) || error); }
+    } else if (action === 'square' && booking.approved && (!booking.payUrl || booking.invoiceId) && !booking.paid && !booking.declined) {
+      try { squareCheckout(booking); } catch (error) { booking.squareError = String((error && error.message) || error); }
       if (booking.payUrl) send('Payment link for your studio booking \u2014 ' + bookingWhen(booking),
-        'Here\u2019s the secure Square link to pay <strong>' + total + '</strong> for your studio booking' + (booking.smsSent ? ' (it\u2019s also been texted to you)' : '') + '. Your booking is confirmed once it\u2019s paid.',
+        'Here\u2019s the secure Square link to pay <strong>' + total + '</strong> for your studio booking. Your booking is confirmed once it\u2019s paid.',
         '<a href="' + booking.payUrl + '" style="background:#111;color:#fff;padding:14px 22px;text-decoration:none;font-weight:600;display:inline-block">Pay ' + total + ' securely</a><br><span style="color:#777;font-size:13px">' + booking.payUrl + '</span>');
     } else if (action === 'paid' && booking.approved && !booking.paid && !booking.declined) {
       // Swap the private hold for the real event, which invites the client.
@@ -400,8 +404,8 @@ function bookingAction(id, sig, action) {
 
 /* ---------- Square ---------- */
 // Needs the SQUARE_TOKEN script property (a production access token from
-// developer.squareup.com). The invoice is for the full amount; Square texts the
-// link when there's a phone number, and the approval email always carries it.
+// developer.squareup.com). Approving a booking creates a checkout link for the
+// full amount and emails it to the client.
 function squareRequest(method, path, payload) {
   const token = String(PropertiesService.getScriptProperties().getProperty('SQUARE_TOKEN') || '').replace(/\s+/g, '').replace(/^Bearer/i, '');
   if (!token) throw new Error('SQUARE_TOKEN script property is missing');
@@ -437,39 +441,35 @@ function phoneE164(phone) {
   return '';
 }
 
-function squareInvoice(booking) {
-  const location = squareLocation();
+// A Square payment link: a hosted checkout page with the amount already set, so
+// the client just enters a card (or Apple Pay / Google Pay) and pays.
+function squareCheckout(booking) {
+  const amount = Math.round(booking.hours * STUDIO_RATE * 100);
+  const prefill = { buyer_email: booking.email };
   const phone = phoneE164(booking.phone);
-  const names = booking.name.split(/\s+/);
-  const customer = { idempotency_key: booking.id + '-customer', given_name: names[0], email_address: booking.email, reference_id: booking.id };
-  if (names.length > 1) customer.family_name = names.slice(1).join(' ');
-  if (booking.company) customer.company_name = booking.company;
-  if (phone) customer.phone_number = phone;
-  const customerId = squareRequest('post', 'customers', customer).customer.id;
-  const order = squareRequest('post', 'orders', { idempotency_key: booking.id + '-order', order: { location_id: location, customer_id: customerId, line_items: [{
-    name: 'Studio booking \u2014 ' + bookingWhen(booking), quantity: '1',
-    base_price_money: { amount: Math.round(booking.hours * STUDIO_RATE * 100), currency: 'USD' } }] } }).order;
-  // Due in three days, or on the booking day if that comes first.
-  const inThreeDays = Utilities.formatDate(new Date(Date.now() + 3 * 864e5), STUDIO_TIME_ZONE, 'yyyy-MM-dd');
-  const today = Utilities.formatDate(new Date(), STUDIO_TIME_ZONE, 'yyyy-MM-dd');
-  const due = booking.date < today ? today : (booking.date < inThreeDays ? booking.date : inThreeDays);
-  const draft = squareRequest('post', 'invoices', { idempotency_key: booking.id + '-invoice-v2', invoice: {
-    location_id: location, order_id: order.id, primary_recipient: { customer_id: customerId },
-    payment_requests: [{ request_type: 'BALANCE', due_date: due }],
-    delivery_method: phone ? 'SMS' : 'SHARE_MANUALLY',
-    accepted_payment_methods: { card: true, cash_app_pay: true, square_gift_card: false, bank_account: false },
-    title: 'Peter Sanjur Studio', description: 'Studio booking: ' + bookingWhen(booking) + '. Your booking is confirmed once this is paid.' } }).invoice;
-  const published = squareRequest('post', 'invoices/' + draft.id + '/publish', { version: draft.version, idempotency_key: booking.id + '-publish' }).invoice;
-  booking.invoiceId = published.id;
-  booking.payUrl = published.public_url || squareRequest('get', 'invoices/' + published.id).invoice.public_url;
-  if (!booking.payUrl) throw new Error('Square created the invoice but did not return a payment link');
-  booking.smsSent = !!phone;
+  if (phone) prefill.buyer_phone_number = phone;
+  const link = squareRequest('post', 'online-checkout/payment-links', {
+    idempotency_key: booking.id + '-link',
+    description: 'Studio booking for ' + booking.name,
+    payment_note: 'Studio booking ' + booking.id,
+    quick_pay: { name: 'Studio booking \u2014 ' + bookingWhen(booking), price_money: { amount: amount, currency: 'USD' }, location_id: squareLocation() },
+    checkout_options: { redirect_url: 'https://www.petersanjur.com/studio-paid.html', ask_for_shipping_address: false, allow_tipping: false },
+    pre_populated_data: prefill
+  }).payment_link;
+  if (!link || !link.url) throw new Error('Square did not return a payment link');
+  booking.payUrl = link.url;
+  booking.squareOrderId = link.order_id;
+  delete booking.invoiceId;
   delete booking.squareError;
 }
 
+// The checkout's order picks up a tender once the client pays.
 function squarePaid(booking) {
-  if (!booking.invoiceId) return false;
-  try { return squareRequest('get', 'invoices/' + booking.invoiceId).invoice.status === 'PAID'; } catch (error) { return false; }
+  if (!booking.squareOrderId) return false;
+  try {
+    const order = squareRequest('get', 'orders/' + booking.squareOrderId).order;
+    return order.state === 'COMPLETED' || !!(order.tenders && order.tenders.length);
+  } catch (error) { return false; }
 }
 
 function setNotionStatus(booking, status) {

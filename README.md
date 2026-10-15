@@ -113,4 +113,10 @@ The form at the bottom of `studio.html` posts to the same Apps Script with `form
 - emails Peter the details with a **Review & approve** link (replying to that email goes straight to the client)
 - emails the client a receipt (their replies come back to info@petersanjur.com)
 
-The review link opens a page that flags any calendar overlap. **Approve & add to calendar** creates the event on Peter's default Google Calendar, invites the client, and emails them a confirmation. Approval is a button rather than a link, so email link scanners can't approve by accident, and review links are signed with a key stored in the script's `SIGNING_KEY` property. The calendar needs one-time permission: run `checkSetup` in the Apps Script editor after updating the code.
+The review link in the request email opens `studio-review.html` on the site (it talks to the script with fetch; Google's own web app pages break for anyone signed in to more than one Google account). Review links are signed with a key stored in the script's `SIGNING_KEY` property, and the page is hidden from search. Each request moves through:
+
+1. **Approve & request payment**: puts a private "HOLD (awaiting payment)" event on Peter's calendar, creates a Square checkout link for the full amount (hours × $125), and emails it to the client. When they gave a phone number, the review page also has a "Text it" link that opens Messages with the link filled in. After paying, Square sends them to `studio-paid.html`.
+2. **Mark paid & confirm**: the review page shows whether Square has recorded the payment. Confirming replaces the hold with the real event, sends the client the calendar invite, and emails "You're booked" with the studio address.
+3. **Decline** (any time before payment): removes the hold and kindly emails the client.
+
+Notion's Status follows along: Requested, Approved, Booked or Declined. Square needs the `SQUARE_TOKEN` script property (the Production access token from developer.squareup.com, not the Application ID). The calendar needs one-time permission: run `checkSetup` in the Apps Script editor after updating the code.

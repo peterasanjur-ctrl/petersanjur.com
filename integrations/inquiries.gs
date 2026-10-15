@@ -29,6 +29,7 @@ function doPost(e) {
   // Real visitors take more than a few seconds to fill in a form.
   const loadedAt = Number(form._t);
   if (loadedAt && Date.now() - loadedAt < 3000) return reply({ ok: true });
+  if (form.booking) return reviewRequest(form);
   const spam = spamReason(form);
   if (spam) return quarantine(form, spam);
   if (form.form_kind === 'studio') return studioRequest(form, (e.parameters && e.parameters.gear) || []);
@@ -244,7 +245,7 @@ function notionRequest(method, path, payload) {
 
 function emailBookingToPeter(booking, problems) {
   const to = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL') || DEFAULT_NOTIFY_EMAIL;
-  const review = ScriptApp.getService().getUrl() + '?booking=' + booking.id + '&sig=' + signBooking(booking.id);
+  const review = REVIEW_PAGE + '?booking=' + booking.id + '&sig=' + encodeURIComponent(signBooking(booking.id));
   const notion = booking.notionUrl ? 'In Notion: ' + booking.notionUrl : 'Not added to Notion: ' + (problems.join('; ') || 'unknown error');
   const lines = bookingLines(booking);
   MailApp.sendEmail({
@@ -295,17 +296,25 @@ function emailBookingReceipt(booking) {
 //   Requested  -> Approve: holds the time on the calendar and asks the client to pay
 //   Approved   -> Mark paid: confirms, invites the client, and shares the address
 //   (any time) -> Decline: lets the client know kindly
-// The buttons call bookingAction() directly (google.script.run), which works inside
-// Google's sandboxed page where an ordinary form post does not.
+// The review page lives at petersanjur.com/studio-review.html and talks to this
+// script with fetch, because Google's own web app pages break for anyone signed
+// in to more than one Google account.
+const REVIEW_PAGE = 'https://www.petersanjur.com/studio-review.html';
+
+function reviewRequest(form) {
+  try {
+    if (form.action && form.action !== 'view') return reply({ ok: true, html: bookingAction(form.booking, form.sig, form.action) });
+    const booking = loadBooking(form.booking, form.sig);
+    if (!booking) return reply({ ok: false, error: 'This booking link is invalid or has expired.' });
+    return reply({ ok: true, html: reviewHtml(booking) });
+  } catch (error) {
+    return reply({ ok: false, error: error.message });
+  }
+}
+
 function reviewBooking(id, sig) {
-  const booking = loadBooking(id, sig);
-  if (!booking) return page('Link not valid', '<p>This booking link is invalid or has expired.</p>');
-  return page('Studio request', '<div id="app">' + reviewHtml(booking) + '</div>' +
-    '<script>function act(a){if(a==="decline"&&!confirm("Decline this request and email the client?"))return;' +
-    'document.querySelectorAll("button").forEach(function(b){b.disabled=true});document.getElementById("note").textContent="Working…";' +
-    'google.script.run.withSuccessHandler(function(h){document.getElementById("app").innerHTML=h;})' +
-    '.withFailureHandler(function(e){document.getElementById("note").textContent="Something went wrong: "+e.message;document.querySelectorAll("button").forEach(function(b){b.disabled=false});})' +
-    '.bookingAction(' + JSON.stringify(id) + ',' + JSON.stringify(sig) + ',a);}</script>');
+  const link = REVIEW_PAGE + '?booking=' + encodeURIComponent(id) + '&sig=' + encodeURIComponent(sig);
+  return page('Studio request', '<p>The review page has moved. <a href="' + link + '" target="_top">Open this request on petersanjur.com</a>.</p>');
 }
 
 function reviewHtml(booking) {

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Studio request — Peter Sanjur Studio</title>
+  <style>
+    body{margin:0;background:#f7f7f5;color:#111;font:16px/1.5 -apple-system,Helvetica,Arial,sans-serif;padding:32px 18px 60px}
+    main{max-width:620px;margin:0 auto}
+    header{font:600 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:#777;margin-bottom:28px}
+    button:disabled{opacity:.5;cursor:default}
+    .error{background:#fde8e4;padding:12px 14px}
+  </style>
+</head>
+<body>
+<main>
+  <header>Peter Sanjur Studio · Booking review</header>
+  <div id="app"><p id="note">Loading the request…</p></div>
+</main>
+<script>
+// Private page for Peter: the link in each studio request email opens it. The
+// signed link is what authorizes it; the page itself holds nothing.
+const ENDPOINT='https://script.google.com/macros/s/AKfycbynmIhW2RbTY1wXJBKGrqr-Jz8rYaO_5B95Rv9i9ZHZ8xWXTMmYN7V5kjP_E7vVf8rV/exec';
+const params=new URLSearchParams(location.search);
+const app=document.getElementById('app');
+async function call(action){
+  const body=new URLSearchParams({booking:params.get('booking')||'',sig:params.get('sig')||'',action});
+  const response=await fetch(ENDPOINT,{method:'POST',body,headers:{Accept:'application/json'}});
+  const result=await response.json();
+  if(!result.ok)throw new Error(result.error||'Something went wrong.');
+  app.innerHTML=result.html;
+}
+function act(action){
+  if(action==='decline'&&!confirm('Decline this request and email the client?'))return;
+  document.querySelectorAll('button').forEach(b=>b.disabled=true);
+  const note=document.getElementById('note');if(note)note.textContent='Working…';
+  call(action).catch(error=>{if(note)note.textContent=error.message;document.querySelectorAll('button').forEach(b=>b.disabled=false);});
+}
+call('view').catch(error=>{app.innerHTML=`<p class="error">${error.message}</p>`;});
+</script>
+</body>
+</html>

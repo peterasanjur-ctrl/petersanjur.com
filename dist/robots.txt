@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /studio-review.html
 
 Sitemap: https://www.petersanjur.com/sitemap.xml

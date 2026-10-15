@@ -403,13 +403,19 @@ function bookingAction(id, sig, action) {
 // developer.squareup.com). The invoice is for the full amount; Square texts the
 // link when there's a phone number, and the approval email always carries it.
 function squareRequest(method, path, payload) {
-  const token = PropertiesService.getScriptProperties().getProperty('SQUARE_TOKEN');
+  const token = String(PropertiesService.getScriptProperties().getProperty('SQUARE_TOKEN') || '').replace(/\s+/g, '').replace(/^Bearer/i, '');
   if (!token) throw new Error('SQUARE_TOKEN script property is missing');
   const options = { method: method, contentType: 'application/json', muteHttpExceptions: true,
     headers: { Authorization: 'Bearer ' + token, 'Square-Version': '2025-01-23' } };
   if (payload) options.payload = JSON.stringify(payload);
   const response = UrlFetchApp.fetch('https://connect.squareup.com/v2/' + path, options);
   const body = JSON.parse(response.getContentText() || '{}');
+  if (response.getResponseCode() === 401) {
+    // Tell a Sandbox (test) token apart from a wrong or expired one.
+    const sandbox = UrlFetchApp.fetch('https://connect.squareupsandbox.com/v2/locations', { muteHttpExceptions: true, headers: { Authorization: 'Bearer ' + token, 'Square-Version': '2025-01-23' } });
+    if (sandbox.getResponseCode() === 200) throw new Error('SQUARE_TOKEN is a Sandbox (test) token; use the Production access token');
+    throw new Error('Square rejected SQUARE_TOKEN (' + token.length + ' characters, starts ' + token.slice(0, 4) + '); copy the Production access token again');
+  }
   if (response.getResponseCode() >= 300) throw new Error((body.errors && body.errors[0] && body.errors[0].detail) || ('HTTP ' + response.getResponseCode()));
   return body;
 }
